@@ -9,42 +9,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="jumbotron text-center">
-    <h1>Innovation zone </h1>
-    <p>Discover all ongoing projects in IZ</p>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <form>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="jobname" type="text" class="form-control" name="jobbname" placeholder="Job Name:">
-                            </div>
-                            <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input id="url" type="url" class="form-control" name="url" placeholder="URL:">
-                </div>
-            </form>
-        </div>
-        <div class = "col-sm-4">
-            <form>
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="#Java">Java</a>
-                        <a href="#C#">C#</a>
-                        <a href="#Python">Python</a>
-                    </div>
-                </div>
-
-
-
-            </form>
-
-        </div>
-    </div>
+<div>
+<form class="form-create" action="/" method="post">
+<h2 class="form-create-heading">Create new Jenkins job</h2>
+<input type="text" class="form-control" name="jobname" placeholder="Name of new Jenkins job" required="" autofocus="" />
+<input type="text" class="form-control" name="gitrep" placeholder="Link to Git repository" required=""/>
+<label class="checkbox">
+    <input type="checkbox" value="findbugs" id="findBugs" name="findBugs"> Findbugs
+    <input type="checkbox" value="checkstyle" id="checkStyle" name="checkStyle"> Checkstyle
+</label>
+<button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Create new job</button>
+</form>
 </div>
 </body>
 </html>

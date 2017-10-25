@@ -17,6 +17,13 @@ app.listen(3000, function() {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+app.post('/', function(req, res){
+    console.log('BUTTON IS CLICKED!');
+    console.log('Job name: ' + req.body.jobname);
+    console.log('Git repository: ' + req.body.gitrep);
+    app.use(index);
+});
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -29,7 +36,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
+app.get('/index', function (req, res) {
+    res.send('index', { title: 'Index' });
+})
 
+app.post('/', function (req, res) {
+    res.send('index', { title: 'Index' });
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

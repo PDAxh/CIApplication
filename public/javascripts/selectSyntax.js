@@ -1,5 +1,5 @@
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+function syntaxSelection() {
+    document.getElementById("selectSyntax").classList.toggle("show");
 }
 
 
