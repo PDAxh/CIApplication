@@ -1,8 +1,94 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.navbar {
+  margin-bottom: 0 !important;
+  border-radius: 0 !important;
+  border: 0;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: "Abril Fatface";
+  font-size: 20px;
+
 }
 
-a {
-  color: #00B7FF;
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* I am trying to center a div between the navigation bar and div "gitForm, with .flexwrap and .flex-centered*/
+
+/* #headLine is the id of the text that is placed inside the div that I am trying to center.*/
+#headLine {
+
+  font-family: "Abril Fatface";
+  background-color: rgba(0, 0, 0, 0.8);
+  display: inline-block;
+  padding: 1%;
+  color: #ffffff;
+  border-radius: 25px;
+}
+
+#nameLabel, #gitLabel {
+  color: #ffffff;
+}
+
+/* I am using aligner to center the div in the middle of the screen.*/
+.Aligner {
+  display: flex;
+  align-items: center;
+  min-height: 90vh;
+  justify-content: center;
+}
+
+.Aligner-item {
+  flex: 1;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 25px;
+
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 544px) {
+  body {
+    background: url("../images/london.jpg");
+    /* Free for commercial use: Photo by Lionel Paulus on Unsplash.com*/
+    height: 100vh;
+
+  }
+
+  /*Large devices (desktops, 992px and up)*/
+  @media (min-width: 992px) {
+
+  }
+
+  /*Extra large devices (large desktops, 1200px and up)*/
+  @media (min-width: 1200px) {
+
+    body {
+      background: url("../images/largeScreen.jpg");
+      /* Free for commercial use: Photo by Lionel Paulus on Unsplash.com
+      https://unsplash.com/photos/da70lgFwlro*/
+      height: 100vh;
+
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* Free for commercial use: Photo by Lionel Paulus on Unsplash.com*/
+
+      /* Center and scale the image nicely */
+
+    }
+  }
+
+
+  /*Extremly large devices>*/
+  @media (min-width: 1920px) {
+
+    body {
+      background: url("../images/largeScreen.jpg");
+    }
+  }
 }
