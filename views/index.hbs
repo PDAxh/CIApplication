@@ -4,40 +4,31 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width,initial-scale=1">
-
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
-
     <!-- BootStrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
             integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
             crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
             integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
             crossorigin="anonymous"></script>
-
     <link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700i,900" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <!-- JS -->
-    <script src="../public/javascripts/backend.js"></script>
+    <script src="../public/javascripts/jobCreator.js"></script>
     <title>Continuous integration for GIT repositories</title>
-
 </head>
-
 
 <header>
     <!-- Kod för navigationsmeny-->
-
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -49,7 +40,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#leftHalf">Add Git Repository</a>
+                    <a class="nav-link" href="#gitForm">Add Git Repository</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#TestReport">View test results</a>
@@ -60,17 +51,14 @@
             </form>
         </div>
     </nav>
-
 </header>
 
 <body>
-
 <!-- This is the div that I want to center verically between the navigation bar and the div bellow-->
 <div id="flexh">
     <!-- <div class="col-6 .col-md-6">-->
     <h1 id="headLine">Let us exam your Git repositories</h1>
 </div>
-
 
 <div id="gitForm">
     <div class="Aligner">
@@ -91,15 +79,29 @@
                                 <input type="text" class="form-control" name="gitrep" id=repoInput
                                        placeholder="A valid Gitrepo...">
                             </div>
-
-                            <!-- checkboxes -->
-
-                            <button class="btn btn-outline-success" id="submitRepo"
-                                    onclick="storeRepo()"
-                                    type="submit" value="Submit">
-
-                                Submit
-                            </button>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" value="FindBugs">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description ml-4">FindBugs</span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" value="CheckStyle">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description ml-4">CheckStyle</span>
+                                    </label>
+                                </div>
+                                <!--      $('.FindBugs').prop('indeterminate', true)     -->
+                                <!--      $('.CheckStyle').prop('indeterminate', true)     -->
+                                <button class="btn btn-outline-success" id="submitRepo"
+                                        onclick="storeRepo()"
+                                        type="submit" value="Submit">
+                                    Submit
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
