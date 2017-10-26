@@ -1,7 +1,7 @@
 function storeRepo() {
 
 
-    var theGit = document.getElementById("repoInput").value;
+    var theGit = document.getElementById("gitname").value;
 
     var check = /https?:\/\/(.+?\.)?github\.com(\/[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*)?/;
 
