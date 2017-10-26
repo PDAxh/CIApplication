@@ -29,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700i,900" rel="stylesheet">
 
     <!-- JS -->
-       <script src="../public/javascripts/backend.js"></script>
+    <script src="../public/javascripts/backend.js"></script>
     <title>Continuous integration for GIT repositories</title>
 
 </head>
@@ -78,30 +78,32 @@
             <div class="col-md-6">
                 <div class=card>
                     <div class="card-block">
-                        <form class="form-create" action="/" method="post">
+                        <div id="colorForm">
+                            <form class="form-create" action="/" method="post">
 
-                            <div class="form-group">
-                                <label id="nameLabel" for="projectNameInput">Name your
-                                    project</label>
-                                <input type="text" class="form-control" name="jobname" id="projectNameInput"
-                                       placeholder="Enter a A project name you can live with">
-                            </div>
-                            <div class="form-group">
-                                <label id="gitLabel" for="repoInput">Enter your Git
-                                    repository</label>
-                                <input type="text" class="form-control" name="gitrep" id=repoInput
-                                       placeholder="A valid Gitrepo...">
-                            </div>
+                                <div class="form-group">
+                                    <label id="nameLabel" for="projectNameInput">Name your
+                                        project</label>
+                                    <input type="text" class="form-control" name="jobname" id="projectNameInput"
+                                           placeholder="Enter a A project name you can live with">
+                                </div>
+                                <div class="form-group">
+                                    <label id="gitLabel" for="repoInput">Enter your Git
+                                        repository</label>
+                                    <input type="text" class="form-control" name="gitrep" id=repoInput
+                                           placeholder="A valid Gitrepo...">
+                                </div>
 
-                            <!-- checkboxes -->
+                                <!-- checkboxes -->
 
-                            <button class="btn btn-outline-success" id="submitRepo"
-                                    onclick="storeRepo()"
-                                    type="submit"  value="Submit">
+                                <button class="btn btn-outline-success" id="submitRepo"
+                                        onclick="storeRepo()"
+                                        type="submit" value="Submit">
 
-                                Submit
-                            </button>
-                        </form>
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
