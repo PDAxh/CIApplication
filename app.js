@@ -28,8 +28,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/', function(req, res, next) {
+    console.log('Button clicked!');
     jobCreator.createJavaMavenJob(req.body.jobname, req.body.gitrep);
-    res.render('index', { title: 'Page Title' });
+    res.render('index');
 });
 
 app.use('/', index);
@@ -54,7 +55,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(3300, function() {
-    console.log('Server started on port 3000...');
+    console.log('Server started on port 3300...');
 });
 
 
