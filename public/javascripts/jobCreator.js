@@ -1,7 +1,7 @@
 
 //Creates a Jenkins job for a Java Maven project
 exports.createJavaMavenJob = function (newJobName, newGitRepo) {
-    console.log('Function createJavaMavenJob initialized')
+    console.log('Function createJavaMavenJob initialized');
     var yaml = require('js-yaml');
     var fs = require('fs');
 
@@ -23,9 +23,9 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo) {
     file[1].job.properties[0].github.url = newGitRepo;
 
     //Saving as a new yaml-file
-    fs.writeFileSync("testa.json", JSON.stringify(file, null, 2));
+    fs.writeFileSync("newjob.json", JSON.stringify(file, null, 2));
 
     //Using job builder to create new job from json file
     const execSync = require('child_process').execSync;
-    var cmd = execSync('jenkins-jobs --conf jenkins_jobs.ini update testa.json');
+    var cmd = execSync('jenkins-jobs --conf jenkins_jobs.ini update newjob.json');
 };
