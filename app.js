@@ -4,33 +4,20 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+var jobCreator = require('./public/javascripts/jobCreator');
+
 var app = express();
 
-app.listen(3000, function() {
-    console.log('Server started on port 3000...');
-})
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
-app.post('/', function(req, res){
-    console.log('BUTTON IS CLICKED!');
-    console.log('Job name: ' + req.body.jobname);
-    console.log('Git repository: ' + req.body.gitrep);
-    app.use(index);
-});
-
-app.get('/index', function (req, res) {
-    res.send('index', { title: 'Index' });
-})
-
-app.post('/', function (req, res) {
-    res.send('index', { title: 'Index' });
-})
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -40,10 +27,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.post('/', function(req, res, next) {
+    jobCreator.createJavaMavenJob(req.body.jobname, req.body.gitrep);
+    res.render('index', { title: 'Page Title' });
+});
+
 app.use('/', index);
 app.use('/users', users);
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -62,5 +52,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(3300, function() {
+    console.log('Server started on port 3000...');
+});
+
+
 
 module.exports = app;

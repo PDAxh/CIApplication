@@ -12,7 +12,7 @@ function storeRepo() {
 
 
     } else {
-        document.getElementById("headLine").innerHTML = "Are you kidding?";
+        document.getElementById("headLine").innerHTML = "Error! Error!";
     }
 }
 
