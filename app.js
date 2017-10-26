@@ -24,6 +24,13 @@ app.post('/', function(req, res){
     app.use(index);
 });
 
+app.get('/index', function (req, res) {
+    res.send('index', { title: 'Index' });
+})
+
+app.post('/', function (req, res) {
+    res.send('index', { title: 'Index' });
+})
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -36,13 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
-app.get('/index', function (req, res) {
-    res.send('index', { title: 'Index' });
-})
 
-app.post('/', function (req, res) {
-    res.send('index', { title: 'Index' });
-})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

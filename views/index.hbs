@@ -73,15 +73,23 @@
 <div id=gitForm>
     <div class="container">
         <div class="d-flex justify-content-center">
-            <form class="form-create" action="/" method="post">
-                <h2 class="form-create-heading">Create new Jenkins job</h2>
-                <input type="text" class="form-control" name="jobname" placeholder="Name of new Jenkins job" required="" autofocus="" />
-                <input type="text" class="form-control" name="gitrep" placeholder="Link to Git repository" required=""/>
-                <label class="checkbox">
-                    <input type="checkbox" value="findbugs" id="findBugs" name="findBugs"> Findbugs
-                    <input type="checkbox" value="checkstyle" id="checkStyle" name="checkStyle"> Checkstyle
-                </label>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Create new job</button>
+            <form>
+                <div class="form-group">
+                    <label id="nameLabel" for="projectNameInput">Enter your
+                        project</label>
+                        <input type="text" class="form-control" id="projectNameInput"
+                           placeholder="Project Name">
+                </div>
+                <div class="form-group">
+                    <label id="gitLabel" for="repoInput">Enter your Git
+                        repository</label>
+                        <input type="text" class="form-control" id=repoInput"
+                           placeholder="A valid Gitrepo...">
+                </div>
+                <button class="btn btn-outline-success" id="submitRepo" onclick="storeRepo()"
+                        type="submit">
+                    Submit
+                </button>
             </form>
         </div>
     </div>
