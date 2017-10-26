@@ -78,32 +78,30 @@
             <div class="col-md-6">
                 <div class=card>
                     <div class="card-block">
-                        <div id="colorForm">
-                            <form class="form-create" action="/" method="post">
+                        <form class="form-create" action="/" method="post">
 
-                                <div class="form-group">
-                                    <label id="nameLabel" for="projectNameInput">Name your
-                                        project</label>
-                                    <input type="text" class="form-control" name="jobname" id="projectNameInput"
-                                           placeholder="Enter a A project name you can live with">
-                                </div>
-                                <div class="form-group">
-                                    <label id="gitLabel" for="repoInput">Enter your Git
-                                        repository</label>
-                                    <input type="text" class="form-control" name="gitrep" id=repoInput
-                                           placeholder="A valid Gitrepo...">
-                                </div>
+                            <div class="form-group">
+                                <label id="nameLabel" for="projectNameInput">Name your
+                                    project</label>
+                                <input type="text" class="form-control" name="jobname" id="projectNameInput"
+                                       placeholder="Enter a A project name you can live with">
+                            </div>
+                            <div class="form-group">
+                                <label id="gitLabel" for="repoInput">Enter your Git
+                                    repository</label>
+                                <input type="text" class="form-control" name="gitrep" id=repoInput
+                                       placeholder="A valid Gitrepo...">
+                            </div>
 
-                                <!-- checkboxes -->
+                            <!-- checkboxes -->
 
-                                <button class="btn btn-outline-success" id="submitRepo"
-                                        onclick="storeRepo()"
-                                        type="submit" value="Submit">
+                            <button class="btn btn-outline-success" id="submitRepo"
+                                    onclick="storeRepo()"
+                                    type="submit" value="Submit">
 
-                                    Submit
-                                </button>
-                            </form>
-                        </div>
+                                Submit
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
