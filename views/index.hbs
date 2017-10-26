@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -23,79 +23,90 @@
             integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700i,900" rel="stylesheet">
 
     <!-- JS -->
-    <script src="js/frontend.js"></script>
-    <script src="js/backend.js"></script>
+       <script src="../public/javascripts/backend.js"></script>
     <title>Continuous integration for GIT repositories</title>
 
 </head>
 
-<body>
-<!-- Kod för navigationsmeny-->
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand mb-0" href="#">Continuous integration</a>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#upperHalf">Add Git Repository</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#TestReport">View test results</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-        </form>
-    </div>
-</nav>
+<header>
+    <!-- Kod för navigationsmeny-->
 
-<!-- Webbsidan är uppdelad i divar -->
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand mb-0" href="#">Continuous integration</a>
 
-<div id="upperHalf">
-    <div class="container-fluid">
-        <div class="row"></div>
-        <div class="col-6 .col-md-4">
-            <h1 id="headLine">Create job for CI server</h1>
-        </div>
-    </div>
-</div>
-<div id=gitForm>
-    <div class="container">
-        <div class="d-flex justify-content-center">
-            <form>
-                <div class="form-group">
-                    <label id="nameLabel" for="jobname">Enter your
-                        project</label>
-                        <input type="text" class="form-control" id="jobname"
-                           placeholder="Project Name">
-                </div>
-                <div class="form-group">
-                    <label id="gitLabel" for="repoInput">Enter your Git
-                        repository</label>
-                        <input type="text" class="form-control" id=gitname"
-                           placeholder="A valid Gitrepo...">
-                </div>
-                <button class="btn btn-outline-success" id="submitRepo" onclick="storeRepo()"
-                        type="submit">
-                    Submit
-                </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#leftHalf">Add Git Repository</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#TestReport">View test results</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
             </form>
         </div>
-    </div>
+    </nav>
+
+</header>
+
+<body>
+
+<!-- This is the div that I want to center verically between the navigation bar and the div bellow-->
+<div id="flexh">
+    <!-- <div class="col-6 .col-md-6">-->
+    <h1 id="headLine">Let us exam your Git repositories</h1>
 </div>
-<div class=.hidden-xs-down>
-    <div id="lowerHalf">
+</div>
+
+
+<div id="gitForm">
+    <div class="Aligner">
+        <div class="container h-100 d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class=card>
+                    <div class="card-block">
+                        <form>
+                            <div class="form-group">
+                                <label id="nameLabel" for="projectNameInput">Name your
+                                    project</label>
+                                <input type="text" class="form-control" id="projectNameInput"
+                                       placeholder="A project name you can live with">
+                            </div>
+
+                            <div class="form-group">
+                                <label id="gitLabel" for="repoInput">Enter your Git
+                                    repository</label>
+                                <input type="text" class="form-control" id=repoInput
+                                       placeholder="A valid Gitrepo...">
+                            </div>
+                            <button class="btn btn-outline-success" id="submitRepo"
+                                    onclick="storeRepo()"
+                                    type="submit">
+                                Submit
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
+
+</html>
+
+
