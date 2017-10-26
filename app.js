@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.post('/', function(req, res, next) {
     console.log('Button clicked!');
     jobCreator.createJavaMavenJob(req.body.jobname, req.body.gitrep);
-    res.render('index', { title: 'Page Title' });
+    res.render('index');
 });
 
 app.use('/', index);
