@@ -20,7 +20,7 @@
       "scm": [
         {
           "git": {
-            "url": "testgit.com",
+            "url": "octoberGit",
             "clean": {
               "after": true
             },
@@ -35,7 +35,7 @@
   },
   {
     "job": {
-      "name": "newJobName",
+      "name": "OctoberProject-maven-job",
       "node": "master",
       "builders": [
         {
@@ -56,7 +56,7 @@
       "properties": [
         {
           "github": {
-            "url": "testgit.com"
+            "url": "octoberGit"
           }
         }
       ],
