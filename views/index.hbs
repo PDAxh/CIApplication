@@ -26,7 +26,7 @@
     <link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700i,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
 
     <!-- JS -->
     <script src="../public/javascripts/backend.js"></script>
@@ -49,7 +49,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#leftHalf">Add Git Repository</a>
+                    <a class="nav-link" href="#gitForm">Add Git Repository</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#TestReport">View test results</a>
@@ -91,15 +91,31 @@
                                 <input type="text" class="form-control" name="gitrep" id=repoInput
                                        placeholder="A valid Gitrepo...">
                             </div>
+                            <div class="form-group">
+                                <div class="form-check">
 
-                            <!-- checkboxes -->
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" value="FindBugs">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description ml-4">FindBugs</span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" value="CheckStyle">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description ml-4">CheckStyle</span>
+                                    </label>
+                                </div>
+                                <!--      $('.FindBugs').prop('indeterminate', true)     -->
+                                <!--      $('.CheckStyle').prop('indeterminate', true)     -->
 
-                            <button class="btn btn-outline-success" id="submitRepo"
-                                    onclick="storeRepo()"
-                                    type="submit" value="Submit">
-
-                                Submit
-                            </button>
+                                <button class="btn btn-outline-success" id="submitRepo"
+                                        onclick="storeRepo()"
+                                        type="submit" value="Submit">
+                                    Submit
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
