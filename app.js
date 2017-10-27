@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//When submit button is pushed
+// When submit button is pushed
 app.post('/', function(req, res, next) {
     console.log('Button clicked!');
     jobCreator.createJavaMavenJob(req.body.jobname, req.body.gitrep);
