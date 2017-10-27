@@ -14,7 +14,7 @@ var time;
 
 
 
-// Getting Git project name and commit identifier
+// Get Git project name and commit identifier
 var options = {
     url: 'http://10.90.131.179:8080/job/Mavenproject/62/api/json?pretty=true',
     'auth': {
@@ -37,16 +37,12 @@ request.get(options, function(error, response, body){
     fullLink = 'https://api.github.com/repos/' + gitProject + '/commits/' + commitIdentifier;
     console.log('Full get link is: ' + fullLink);
     console.log('')
+
     getCommitInfo();
 });
 
 
-
-
-//var gitProject = 'PDAxh/Jenkins';
-//var commitIdentifier = 'b96d94c9176b4cbdae290ace6f1981b95d856a79';
-
-
+//Get user info on who made the commit, and date&time of commit
 function getCommitInfo() {
     var options = {
         url: fullLink,
