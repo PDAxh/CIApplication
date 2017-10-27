@@ -27,7 +27,7 @@ label {
 /* #headLine is the id of the text that is placed inside the div that I am trying to center.*/
 #headLine {
 
-    font-family: "Abril Fatface";
+    font-family: 'Abril Fatface', cursive;
     background-color: rgba(0, 0, 0, 0.8);
     display: inline-block;
     padding: 1%;
@@ -72,22 +72,34 @@ label {
 }
 
 /* results.hbs */
-#resultsPage{
+#resultsPage {
     background: url("../images/skyline.jpg");
 }
+#semiBlackHead{
+    background: rgba(0, 0, 0, 0.7);
+    font-family: 'Karla', sans-serif;
+    color: #ffffff;
+
+
+}
+
 .th {
     width: 100%;
-
     position: relative;
     z-index: 1;
     overflow: hidden;
     margin: 0 auto;
     padding: 2rem;
     box-sizing: border-box;
-    box-shadow: 0 .5em 1em rgba(0, 0, 0, .3);
+    box-shadow: 0 .5em 1em rgba(0, 0, 0, 0.5);
 }
- #bleachedBody{
-     background-color: rgba(255, 255, 255, 0.9);
+
+#semiBlackHead {
+
+}
+
+#bleachedBody {
+    background-color: rgba(255, 255, 255, 0.9);
     background-size: cover;
     text-align: center;
     background-blend-mode: soft-light;
