@@ -1,5 +1,5 @@
 
-//Creates a Jenkins job for a Java Maven project
+//Creates a new Jenkins job for a Java Maven project
 exports.createJavaMavenJob = function (newJobName, newGitRepo) {
     console.log('Function createJavaMavenJob initialized');
     var yaml = require('js-yaml');
@@ -9,9 +9,7 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo) {
     var data = fs.readFileSync('./javamaven.yml', 'utf8');
     var file = yaml.safeLoad(data, 'utf8');
 
-    //Variables
-    //var newJobName = req.body.jobname;
-    //var newGitRepo = req.body.gitrep;
+    //Git global configure variables
     var newGitConfigName = "confname";
     var newGitConfigEmail = "confemail";
 
@@ -22,7 +20,7 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo) {
     file[1].job.name = newJobName + "-maven-job";
     file[1].job.properties[0].github.url = newGitRepo;
 
-    //Saving as a new yaml-file
+    //Saving as a new json-file
     fs.writeFileSync("newjob.json", JSON.stringify(file, null, 2));
 
     //Using job builder to create new job from json file

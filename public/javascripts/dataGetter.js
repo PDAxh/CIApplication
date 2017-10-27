@@ -1,10 +1,9 @@
 const request = require('request');
 
-var gitProject;
+var gitProject; // = gitusername/projectname
 var commitIdentifier;
 
-var fullLink;
-// = https://api.github.com/repos/PDAxh/Jenkins/commits/b96d94c9176b4cbdae290ace6f1981b95d856a79
+var fullLink; // Link is used to access github api and extract username + date & time of specific commit
 
 var author;
 var gitUserName;
@@ -14,7 +13,7 @@ var time;
 
 
 
-// Get Git project name and commit identifier
+// Get Git project name and commit-identifier
 var options = {
     url: 'http://10.90.131.179:8080/job/Mavenproject/62/api/json?pretty=true',
     'auth': {
@@ -50,7 +49,6 @@ function getCommitInfo() {
             'User-Agent': 'request'
         },
         json: true
-
     };
 
     request.get(options, function(error, response, body){
@@ -63,7 +61,7 @@ function getCommitInfo() {
         var timeS = dateTimeS[1].split('Z');
         time = timeS[0];
 
-        console.log('LAST COMMIT INFO:')
+        console.log('LAST COMMIT INFO:');
         console.log('Author: ' + author);
         console.log('Git username: ' + gitUserName);
         console.log('Date: ' + date + '\nTime: ' + time);
