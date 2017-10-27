@@ -20,7 +20,7 @@
       "scm": [
         {
           "git": {
-            "url": "Testgit",
+            "url": "tgest.git",
             "clean": {
               "after": true
             },
@@ -35,7 +35,7 @@
   },
   {
     "job": {
-      "name": "Testname-maven-job",
+      "name": "Testmavenproject4-maven-job",
       "node": "master",
       "builders": [
         {
@@ -56,7 +56,7 @@
       "properties": [
         {
           "github": {
-            "url": "Testgit"
+            "url": "tgest.git"
           }
         }
       ],
