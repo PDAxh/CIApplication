@@ -18,16 +18,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
             integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="../public/stylesheets/resultsStyle.css">
+    <link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
+    <!-- DataTables CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <!-- JS -->
-    <script src="../public/javascripts/jobCreator.js"></script>
+    <script src="../public/javascripts/dataTables.js"></script>
     <title>Continuous integration Test Results</title>
 </head>
 
-<body>
+<body id="resultsPage">
+
 
 <header>
 
@@ -35,26 +41,29 @@
 
 
 <main>
+    <div id="resultsTable">
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Last push</th>
-            <th>Project</th>
-            <th>Bugs</th>
-            <th>Style errors</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Project</td>
-            <td>Bugs</td>
-            <td>Style</td>
-        </tr>
-        </tbody>
-    </table>
-
+        <div class="table-responsive">
+            <table class="table table-striped thead-inverse table-sm table-bordered">
+                <thead>
+                <tr>
+                    <th>Last push</th>
+                    <th>Project</th>
+                    <th>Bugs</th>
+                    <th>Style errors</th>
+                </tr>
+                </thead>
+                <tbody id="bleachedBody">
+                <tr>
+                    <td scope="row">1</td>
+                    <td>Project</td>
+                    <td>Bugs</td>
+                    <td>Style</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </main>
 
