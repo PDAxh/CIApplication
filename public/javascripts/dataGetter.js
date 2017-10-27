@@ -58,10 +58,15 @@ function getCommitInfo() {
         author = body.commit.author.name;
         gitUserName = body.author.login;
         dateTime = body.commit.author.date;
+        var dateTimeS = dateTime.split('T');
+        date = dateTimeS[0];
+        var timeS = dateTimeS[1].split('Z');
+        time = timeS[0];
 
+        console.log('LAST COMMIT INFO:')
         console.log('Author: ' + author);
         console.log('Git username: ' + gitUserName);
-        console.log('Date & time: ' + dateTime);
+        console.log('Date: ' + date + '\nTime: ' + time);
     });
 }
 
