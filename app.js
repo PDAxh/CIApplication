@@ -34,6 +34,12 @@ app.post('/', function(req, res, next) {
     res.render('index');
 });
 
+app.get('/', function (req, res, next) {
+    console.log('view result button clicked!')
+    //TODO create connecdtion to hyperlink
+
+})
+
 app.use('/', index);
 app.use('/users', users);
 
