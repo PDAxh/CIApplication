@@ -71,7 +71,7 @@ label {
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 544px) {
-    body {
+    #frontPage {
         background: url("../images/london.jpg");
         /* Free for commercial use: Photo by Lionel Paulus on Unsplash.com*/
         height: 100vh;
@@ -86,7 +86,7 @@ label {
     /*Extra large devices (large desktops, 1200px and up)*/
     @media (min-width: 1200px) {
 
-        body {
+        #frontPage {
             background: url("../images/largeScreen.jpg");
             /* Free for commercial use: Photo by Lionel Paulus on Unsplash.com
             https://unsplash.com/photos/da70lgFwlro*/
@@ -107,7 +107,7 @@ label {
     /*Extremly large devices>*/
     @media (min-width: 1920px) {
 
-        body {
+        #frontPage {
             background: url("../images/largeScreen.jpg");
         }
     }
