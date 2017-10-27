@@ -6,8 +6,8 @@ var router = express.Router();
   res.render('index', { title: 'Index' });
 });
 
-router.get('/reports', function(req, res, next) {
-    res.render('reports', { title: 'reportsite' });
+router.get('/results', function(req, res, next) {
+    res.render('results', { title: 'reportsite' });
 });
 
 
