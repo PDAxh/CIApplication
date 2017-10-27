@@ -34,14 +34,15 @@ app.post('/', function(req, res, next) {
     res.render('index');
 });
 
-app.get('/', function (req, res, next) {
-    console.log('view result button clicked!')
-    //TODO create connecdtion to hyperlink
-
-})
+//Jenkins will notify after job(build) is complete
+app.post('/notification', function(req, res, next) {
+    console.log('Jenkins pratar med oss!!');
+});
 
 app.use('/', index);
 app.use('/users', users);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
