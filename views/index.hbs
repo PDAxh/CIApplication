@@ -23,7 +23,9 @@
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <!-- JS -->
+    <script src="../public/javascripts/updateResults.js"></script>
     <script src="../public/javascripts/jobCreator.js"></script>
+
     <title>Continuous integration for GIT repositories</title>
 </head>
 
@@ -43,7 +45,7 @@
                     <a class="nav-link" href="#gitForm">Add Git Repository</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#TestReport">View test results</a>
+                    <a class="nav-link" href="#testReport">View test results</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -81,32 +83,44 @@
                                        placeholder="A valid Gitrepo...">
                             </div>
 
-
-
-
-                            <!-- Ska bara komma fram vid JavaMaven 
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" value="FindBugs">
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-description ml-4">FindBugs</span>
-                                    </label>
+                            <div id="chooseTest">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-success dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Choose Test
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="btn btn-outline-success dropdown-item" id="dropDownJava"
+                                           href="#mavenForm">Java</a>
+                                    </div>
                                 </div>
-                                <div class="form-check">
-                                    <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" value="CheckStyle">
-                                        <span class="custom-control-indicator"></span>
-                                        <span class="custom-control-description ml-4">CheckStyle</span>
-                                    </label>
+                            </div>
+
+                            <!-- Ska bara komma fram vid JavaMaven -->
+                            <div id="mavenForm">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <label class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" value="FindBugs">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description ml-4">FindBugs</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" value="CheckStyle">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description ml-4">CheckStyle</span>
+                                        </label>
+                                    </div>
+                                    <!--      $('.FindBugs').prop('indeterminate', true)     -->
+                                    <!--      $('.CheckStyle').prop('indeterminate', true)     -->
+                                    <button class="btn btn-outline-success" id="submitRepo"
+                                            onclick="storeRepo()"
+                                            type="submit" value="Submit">
+                                        Submit
+                                    </button>
                                 </div>
-                                <!--      $('.FindBugs').prop('indeterminate', true)     -->
-                                <!--      $('.CheckStyle').prop('indeterminate', true)     -->
-                                <button class="btn btn-outline-success" id="submitRepo"
-                                        onclick="storeRepo()"
-                                        type="submit" value="Submit">
-                                    Submit
-                                </button>
                             </div>
                         </form>
                     </div>
