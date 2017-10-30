@@ -15,13 +15,15 @@ router.get('/results', function(req, res, next) {
 router.get('/results2', function(req, res, next) {
     var jobNames = [];
 
-    dataGetter.getAllJobNames('http://10.90.131.114:8080');
+    dataGetter.getAllJobs('http://10.90.131.114:8080');
 
     exports.loadJobs = function (jobsList) {
+        console.log('loadJobs: ' + jobsList);
+
         jobNames = jobsList;
         var table = "";
         for(var i = 0; i < jobsList.length; i++) {
-            table += '<tr><td>' + jobsList[i] + '</td><td>2</td><td>3</td><td>4</td></tr>';
+            table += '<tr><td>' + jobsList[i].name + '</td><td>' + i + '</td><td>' + jobsList[i].checkstyle + '</td><td>' + jobsList[i].findbugs + '</td></tr>';
         }
         res.render('results2', { title: 'reportsite2', insertRow: table });
     };
