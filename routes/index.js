@@ -13,14 +13,11 @@ router.get('/results', function(req, res, next) {
 });
 
 router.get('/results2', function(req, res, next) {
-    var jobNames = [];
-
+    //Getting Jenkins jobs
     dataGetter.getAllJobs('http://10.90.131.114:8080');
 
+    //Builds the table and then renders the results site
     exports.loadJobs = function (jobsList) {
-        console.log('loadJobs: ' + jobsList);
-
-        jobNames = jobsList;
         var table = "";
         for(var i = 0; i < jobsList.length; i++) {
             table += '<tr><td>' + jobsList[i].name + '</td><td>' + i + '</td><td>' + jobsList[i].checkstyle + '</td><td>' + jobsList[i].findbugs + '</td></tr>';
