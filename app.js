@@ -45,7 +45,7 @@ app.post('/notification', function(req, res, next) {
     console.log('Build Status: ' + req.body.build.status);
 
     dataGetter.getFindbugsReport('http://10.90.131.114:8080', req.body.name, req.body.build.number);
-    dataGetter.GetCheckstyleReport('http://10.90.131.114:8080', req.body.name, req.body.build.number);
+    dataGetter.getCheckstyleReport('http://10.90.131.114:8080', req.body.name, req.body.build.number);
 });
 
 app.use('/', index);

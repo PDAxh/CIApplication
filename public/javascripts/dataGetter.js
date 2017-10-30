@@ -68,10 +68,10 @@ function getCommitInfo() {
     });
 }*/
 
+//Get findbugs report data on specific job and build
 exports.getFindbugsReport = function (host, jobName, buildNr) {
     var reportLink = host + '/job/' + jobName + '/' + buildNr + '/findbugsResult/api/json';
 
-    //http://10.90.131.114:8080/job/MattiasJob-maven-job/9/findbugsResult/api/json
     var options = {
         url: reportLink,
         'auth': {
@@ -86,17 +86,17 @@ exports.getFindbugsReport = function (host, jobName, buildNr) {
     };
 
     request.get(options, function(error, response, body){
-        data = body;
+        var data = body;
         console.log('\n---- Findbugs results ----');
         console.log('Number of new warnings: ' + data.numberOfNewWarnings);
         console.log('Number of warnings: ' + data.numberOfWarnings);
     });
 };
 
-exports.GetCheckstyleReport = function (host, jobName, buildNr) {
+//Get checkstyle report data on specific job and build
+exports.getCheckstyleReport = function (host, jobName, buildNr) {
     var reportLink = host + '/job/' + jobName + '/' + buildNr + '/checkstyleResult/api/json';
 
-    //http://10.90.131.114:8080/job/MattiasJob-maven-job/15/checkstyleResult/api/json
     var options = {
         url: reportLink,
         'auth': {
@@ -111,10 +111,35 @@ exports.GetCheckstyleReport = function (host, jobName, buildNr) {
     };
 
     request.get(options, function(error, response, body){
-        data = body;
+        var data = body;
         console.log('\n---- Checkstyle results ----');
         console.log('Number of new warnings: ' + data.numberOfNewWarnings);
         console.log('Number of warnings: ' + data.numberOfWarnings);
     });
 };
 
+// Get a list of all job names on Jenkins server
+exports.getAllJobNames = function (host) {
+    var link = host + '/api/json?pretty=true';
+    var options = {
+        url: link,
+        'auth': {
+            'user': 'admin1',
+            'pass': 'admin1',
+            'sendImmediately': true
+        },
+        headers: {
+            'User-Agent': 'request'
+        },
+        json: true
+    };
+
+    request.get(options, function(error, response, body){
+        console.log(body.jobs);
+        var jobsList = [];
+        for(i = 0; i < body.jobs.length; i++) {
+            jobsList.push(body.jobs[i].name);
+        }
+        console.log(jobsList);
+    });
+};
