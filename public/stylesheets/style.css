@@ -192,4 +192,10 @@ div.dataTables_wrapper div.dataTables_info {
             background: url("../images/largeScreen.jpg");
         }
     }
+    @media (min-width: 2100px) {
+
+        #frontPage {
+            background: url("../images/londonWide.jpg");
+        }
+    }
 }
