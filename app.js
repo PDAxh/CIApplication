@@ -37,6 +37,9 @@ app.post('/', function(req, res, next) {
 //Jenkins will notify after job(build) is complete
 app.post('/notification', function(req, res, next) {
     console.log('Jenkins pratar med oss!!');
+    console.log('1: ' + req.body.name);
+    console.log('2: ' + req.body.url);
+    console.log('2: ' + req.body.build.status);
 });
 
 app.use('/', index);
