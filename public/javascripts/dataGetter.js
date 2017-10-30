@@ -1,6 +1,6 @@
 const request = require('request');
 
-var gitProject; // = gitusername/projectname
+/*var gitProject; // = gitusername/projectname
 var commitIdentifier;
 
 var fullLink; // Link is used to access github api and extract username + date & time of specific commit
@@ -35,7 +35,7 @@ request.get(options, function(error, response, body){
 
     fullLink = 'https://api.github.com/repos/' + gitProject + '/commits/' + commitIdentifier;
     console.log('Full get link is: ' + fullLink);
-    console.log('')
+    console.log('');
 
     getCommitInfo();
 });
@@ -66,6 +66,109 @@ function getCommitInfo() {
         console.log('Git username: ' + gitUserName);
         console.log('Date: ' + date + '\nTime: ' + time);
     });
-}
+}*/
 
+//Get findbugs report data on specific job and build
+exports.getFindbugsReport = function (host, jobName, buildNr) {
+    var reportLink = host + '/job/' + jobName + '/' + buildNr + '/findbugsResult/api/json';
 
+    var options = {
+        url: reportLink,
+        'auth': {
+            'user': 'admin1',
+            'pass': 'admin1',
+            'sendImmediately': true
+        },
+        headers: {
+            'User-Agent': 'request'
+        },
+        json: true
+    };
+
+    request.get(options, function(error, response, body){
+        var data = body;
+        console.log('\n---- Findbugs results ----');
+        console.log('Number of new warnings: ' + data.numberOfNewWarnings);
+        console.log('Number of warnings: ' + data.numberOfWarnings);
+    });
+};
+
+//Get checkstyle report data on specific job and build
+exports.getCheckstyleReport = function (host, jobName, buildNr) {
+    var reportLink = host + '/job/' + jobName + '/' + buildNr + '/checkstyleResult/api/json';
+
+    var options = {
+        url: reportLink,
+        'auth': {
+            'user': 'admin1',
+            'pass': 'admin1',
+            'sendImmediately': true
+        },
+        headers: {
+            'User-Agent': 'request'
+        },
+        json: true
+    };
+
+    request.get(options, function(error, response, body){
+        var data = body;
+        console.log('\n---- Checkstyle results ----');
+        console.log('Number of new warnings: ' + data.numberOfNewWarnings);
+        console.log('Number of warnings: ' + data.numberOfWarnings);
+    });
+};
+
+// Get a list of all job names on Jenkins server
+exports.getAllJobNames = function (host) {
+    var link = host + '/api/json?pretty=true';
+    var options = {
+        url: link,
+        'auth': {
+            'user': 'admin1',
+            'pass': 'admin1',
+            'sendImmediately': true
+        },
+        headers: {
+            'User-Agent': 'request'
+        },
+        json: true
+    };
+
+    request.get(options, function(error, response, body){
+        console.log(body.jobs);
+        var jobsList = [];
+        for(i = 0; i < body.jobs.length; i++) {
+            jobsList.push(body.jobs[i].name);
+        }
+        console.log(jobsList);
+    });
+};
+
+exports.getHtmlDetailReport = function (host) {
+
+    var reportLink = 'http://10.90.131.114:8080/job/Mavenproject/HTML_Report/';
+    //var reportLink = host + '/job/' + jobName + '/' + buildNr + '/HTML_Report';
+    //TODO get html link.
+    console.log(reportLink);
+
+    function getDetailResults(req) {
+        return url.format({
+            protocol: req.protocol,
+            host: req.get(reportLink),
+            pathname: req.originalUrl
+        });
+        var options = {
+            url: reportLink,
+            'auth': {
+                'user': 'admin1',
+                'pass': 'admin1',
+                'sendImmediately': true
+            },
+            headers: {
+                'User-Agent': 'request'
+                },
+                 json: true
+
+        }
+    }
+};
