@@ -116,8 +116,46 @@ exports.getCheckstyleReport = function (host, jobName, buildNr) {
         console.log('\n---- Checkstyle results ----');
         console.log('Number of new warnings: ' + data.numberOfNewWarnings);
         console.log('Number of warnings: ' + data.numberOfWarnings);
+        return data.numberOfWarnings;
     });
 };
+
+// Creates array filled with job objects
+exports.getAllJobs = function (host) {
+    var jobsList = [];
+    var link = host + '/api/json?pretty=true';
+    var options = {
+        url: link,
+        'auth': {
+            'user': 'admin1',
+            'pass': 'admin1',
+            'sendImmediately': true
+        },
+        headers: {
+            'User-Agent': 'request'
+        },
+        json: true
+    };
+    request.get(options, function(error, response, body){
+
+        for(var i = 0; i < body.jobs.length; i++) {
+            jobsList.push({
+                name: body.jobs[i].name,
+                checkstyle: 0,
+                findbugs: 17});
+        }
+
+        //loadcheckstyleResults(jobsList);
+        /*function loadcheckstyleResults(jobsList) {
+            for(var i = 0; i < jobsList.length; i++) {
+                jobsList[i].checkstyle = exports.getCheckstyleReport(host, jobsList[i].name, 'lastBuild');
+            }
+
+        }*/
+
+        index.loadJobs(jobsList);
+    });
+}
 
 // Get a list of all job names on Jenkins server
 exports.getAllJobNames = function (host) {
