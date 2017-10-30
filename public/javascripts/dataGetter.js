@@ -147,14 +147,10 @@ exports.getAllJobNames = function (host) {
 exports.getHtmlDetailReport = function (host, jobName, buildNr) {
 
     var reportLink = 'http://10.90.131.114:8080/job/Mavenproject/HTML_Report/';
+
     //var reportLink = host + '/job/' + jobName + '/' + buildNr + '/HTML_Report';
 
     function getDetailResults(req) {
-        return url.format({
-            protocol: req.protocol,
-            host: req.get(reportLink),
-            pathname: req.originalUrl
-        });
 
         var gethtml = {
             url: reportLink,
@@ -165,13 +161,11 @@ exports.getHtmlDetailReport = function (host, jobName, buildNr) {
             },
             headers: {
                 'User-Agent': 'request'
-                },
-
-            json: true
+            }
         };
-        request.get(gethtml, function(error, response, body){
-            open( reportLink, function (err) {
-                if ( err ) throw err;
+        request.get(gethtml, function (error, response, body) {
+            open(reportLink, function (err) {
+                if (err) throw err;
             });
 
         });
