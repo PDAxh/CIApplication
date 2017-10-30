@@ -22,12 +22,12 @@
             git-config-email: 'git-config-email'
             #credentials-id: e8ed41e6-ec37-11e5-b5a0-43b698df0c45
     notifications:
-        - http:
-            url: http://localhost:3300/notification
-            format: json
-            event: completed
-            timeout: 30000
-            log: -1
+      - http:
+          url: http://http://10.90.131.114:3300/notification
+          format: json
+          event: finalized
+          timeout: 30000
+          log: 0
 
 - job:
     name: 'name-maven-build'
@@ -92,3 +92,4 @@
             dont-compute-new: false
             use-previous-build-as-reference: true
             use-stable-build-as-reference: true
+
