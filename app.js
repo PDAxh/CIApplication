@@ -36,10 +36,12 @@ app.post('/', function(req, res, next) {
 
 //Jenkins will notify after job(build) is complete
 app.post('/notification', function(req, res, next) {
-    console.log('Jenkins pratar med oss!!');
-    console.log('1: ' + req.body.name);
-    console.log('2: ' + req.body.url);
-    console.log('2: ' + req.body.build.status);
+    console.log('Incoming notification from Jenkins:\n');
+    console.log('Job name: ' + req.body.name);
+    console.log('Build nr: ' + req.body.build.number);
+    console.log('Git url: ' + req.body.build.scm.url);
+    console.log('Commit: ' + req.body.build.scm.commit);
+    console.log('Build Status: ' + req.body.build.status);
 });
 
 app.use('/', index);
