@@ -1,6 +1,6 @@
 const request = require('request');
 
-var gitProject; // = gitusername/projectname
+/*var gitProject; // = gitusername/projectname
 var commitIdentifier;
 
 var fullLink; // Link is used to access github api and extract username + date & time of specific commit
@@ -35,7 +35,7 @@ request.get(options, function(error, response, body){
 
     fullLink = 'https://api.github.com/repos/' + gitProject + '/commits/' + commitIdentifier;
     console.log('Full get link is: ' + fullLink);
-    console.log('')
+    console.log('');
 
     getCommitInfo();
 });
@@ -66,6 +66,55 @@ function getCommitInfo() {
         console.log('Git username: ' + gitUserName);
         console.log('Date: ' + date + '\nTime: ' + time);
     });
-}
+}*/
 
+exports.getFindbugsReport = function (host, jobName, buildNr) {
+    var reportLink = host + '/job/' + jobName + '/' + buildNr + '/findbugsResult/api/json';
+
+    //http://10.90.131.114:8080/job/MattiasJob-maven-job/9/findbugsResult/api/json
+    var options = {
+        url: reportLink,
+        'auth': {
+            'user': 'admin1',
+            'pass': 'admin1',
+            'sendImmediately': true
+        },
+        headers: {
+            'User-Agent': 'request'
+        },
+        json: true
+    };
+
+    request.get(options, function(error, response, body){
+        data = body;
+        console.log('\n---- Findbugs results ----');
+        console.log('Number of new warnings: ' + data.numberOfNewWarnings);
+        console.log('Number of warnings: ' + data.numberOfWarnings);
+    });
+};
+
+exports.GetCheckstyleReport = function (host, jobName, buildNr) {
+    var reportLink = host + '/job/' + jobName + '/' + buildNr + '/checkstyleResult/api/json';
+
+    //http://10.90.131.114:8080/job/MattiasJob-maven-job/15/checkstyleResult/api/json
+    var options = {
+        url: reportLink,
+        'auth': {
+            'user': 'admin1',
+            'pass': 'admin1',
+            'sendImmediately': true
+        },
+        headers: {
+            'User-Agent': 'request'
+        },
+        json: true
+    };
+
+    request.get(options, function(error, response, body){
+        data = body;
+        console.log('\n---- Checkstyle results ----');
+        console.log('Number of new warnings: ' + data.numberOfNewWarnings);
+        console.log('Number of warnings: ' + data.numberOfWarnings);
+    });
+};
 

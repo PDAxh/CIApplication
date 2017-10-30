@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var jobCreator = require('./public/javascripts/jobCreator');
+var dataGetter = require('./public/javascripts/dataGetter')
 
 var app = express();
 
@@ -36,12 +37,15 @@ app.post('/', function(req, res, next) {
 
 //Jenkins will notify after job(build) is complete
 app.post('/notification', function(req, res, next) {
-    console.log('Incoming notification from Jenkins:\n');
+    console.log('\n---- Incoming notification from Jenkins ----');
     console.log('Job name: ' + req.body.name);
     console.log('Build nr: ' + req.body.build.number);
     console.log('Git url: ' + req.body.build.scm.url);
     console.log('Commit: ' + req.body.build.scm.commit);
     console.log('Build Status: ' + req.body.build.status);
+
+    dataGetter.getFindbugsReport('http://10.90.131.114:8080', req.body.name, req.body.build.number);
+    dataGetter.GetCheckstyleReport('http://10.90.131.114:8080', req.body.name, req.body.build.number);
 });
 
 app.use('/', index);
