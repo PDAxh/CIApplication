@@ -144,12 +144,10 @@ exports.getAllJobNames = function (host) {
     });
 };
 
-exports.getHtmlDetailReport = function (host) {
+exports.getHtmlDetailReport = function (host, jobName, buildNr) {
 
     var reportLink = 'http://10.90.131.114:8080/job/Mavenproject/HTML_Report/';
     //var reportLink = host + '/job/' + jobName + '/' + buildNr + '/HTML_Report';
-    //TODO get html link.
-    console.log(reportLink);
 
     function getDetailResults(req) {
         return url.format({
@@ -157,7 +155,8 @@ exports.getHtmlDetailReport = function (host) {
             host: req.get(reportLink),
             pathname: req.originalUrl
         });
-        var options = {
+
+        var gethtml = {
             url: reportLink,
             'auth': {
                 'user': 'admin1',
@@ -167,8 +166,12 @@ exports.getHtmlDetailReport = function (host) {
             headers: {
                 'User-Agent': 'request'
                 },
-                 json: true
 
-        }
+            json: true
+        };
+        request.get(gethtml, function(error, response, body){
+            var data = body;
+
+        });
     }
 };
