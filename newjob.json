@@ -20,7 +20,7 @@
       "scm": [
         {
           "git": {
-            "url": "tgest.git",
+            "url": "Ahitsot.git",
             "clean": {
               "after": true
             },
@@ -35,7 +35,7 @@
   },
   {
     "job": {
-      "name": "Testmavenproject4-maven-job",
+      "name": "testproject22-maven-job",
       "node": "master",
       "builders": [
         {
@@ -56,7 +56,7 @@
       "properties": [
         {
           "github": {
-            "url": "tgest.git"
+            "url": "Ahitsot.git"
           }
         }
       ],

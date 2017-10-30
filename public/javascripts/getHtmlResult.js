@@ -1,11 +1,27 @@
 const request = require('request');
-var url = require('url');
+var jobname;
+var lastBuild;
+const host1 = 'http://10.90.131.114:8080/job/';
+var fullLink = 'host1'+jobname+'/'+lastBuild+'/HTML_Report';
 
-function gethtmlresult(req) {
-    return url.format({
+var resultConnection = {
+    url: fullLink,
+    'auth': {
+        'user': 'admin1',
+        'pass': 'admin1',
+        'sendImmediately': true
+    },
+    json: true
+};
+
+//Get user info on who made the commit, and date&time of commit
+function getreporthtml() {
+    var request = url.format({
         protocol: req.protocol,
-        host: req.get('http://10.90.131.179:8080/job/'+jobname+'/'+lastBuild+'/HTML_Report/'),
-        pathname: req.originalUrl
+        host: req.get(fullLink),
+        pathname: req.originalUrl,
     });
 
 }
+
+
