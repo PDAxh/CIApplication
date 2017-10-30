@@ -31,6 +31,7 @@ label {
     background-color: rgba(0, 0, 0, 0.8);
     display: inline-block;
     padding: 1%;
+    margin-top: 10vh;
     color: #ffffff;
     border-radius: 25px;
 }
@@ -39,7 +40,7 @@ label {
 .Aligner {
     display: flex;
     align-items: center;
-    min-height: 90vh;
+    min-height: 80vh;
     justify-content: center;
 }
 
