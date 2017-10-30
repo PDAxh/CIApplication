@@ -1,4 +1,5 @@
 const request = require('request');
+var index = require('../../routes/index');
 
 /*var gitProject; // = gitusername/projectname
 var commitIdentifier;
@@ -120,6 +121,7 @@ exports.getCheckstyleReport = function (host, jobName, buildNr) {
 
 // Get a list of all job names on Jenkins server
 exports.getAllJobNames = function (host) {
+    var jobsList = [];
     var link = host + '/api/json?pretty=true';
     var options = {
         url: link,
@@ -133,15 +135,14 @@ exports.getAllJobNames = function (host) {
         },
         json: true
     };
-
     request.get(options, function(error, response, body){
-        console.log(body.jobs);
-        var jobsList = [];
-        for(i = 0; i < body.jobs.length; i++) {
+
+        for(var i = 0; i < body.jobs.length; i++) {
             jobsList.push(body.jobs[i].name);
         }
-        console.log(jobsList);
+        index.loadJobs(jobsList);
     });
+
 };
 
 exports.getHtmlDetailReport = function (host, jobName, buildNr) {

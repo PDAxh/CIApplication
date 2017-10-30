@@ -44,6 +44,8 @@ app.post('/notification', function(req, res, next) {
     console.log('Commit: ' + req.body.build.scm.commit);
     console.log('Build Status: ' + req.body.build.status);
 
+    //res.render('results');
+
     dataGetter.getFindbugsReport('http://10.90.131.114:8080', req.body.name, req.body.build.number);
     dataGetter.getCheckstyleReport('http://10.90.131.114:8080', req.body.name, req.body.build.number);
 });

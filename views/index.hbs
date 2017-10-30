@@ -6,8 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.js"
+            integrity="sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg="
             crossorigin="anonymous"></script>
     <!-- BootStrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
@@ -22,8 +23,8 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
-    <!-- JS -->
-    <script src="../public/javascripts/updateResults.js"></script>
+    <!-- JS
+    <script src="../public/javascripts/updateResults.js"></script> -->
     <script src="../public/javascripts/jobCreator.js"></script>
 
     <title>Continuous integration for GIT repositories</title>
@@ -113,14 +114,16 @@
                                             <span class="custom-control-description ml-4">CheckStyle</span>
                                         </label>
                                     </div>
-                                    <!--      $('.FindBugs').prop('indeterminate', true)     -->
-                                    <!--      $('.CheckStyle').prop('indeterminate', true)     -->
-                                    <button class="btn btn-outline-success" id="submitRepo"
-                                            onclick="storeRepo()"
-                                            type="submit" value="Submit">
-                                        Submit
-                                    </button>
                                 </div>
+                            </div>
+                            <div>
+                                <!--      $('.FindBugs').prop('indeterminate', true)     -->
+                                <!--      $('.CheckStyle').prop('indeterminate', true)     -->
+                                <button class="btn btn-outline-success" id="submitRepo"
+                                        onclick="storeRepo()"
+                                        type="submit" value="Submit">
+                                    Submit
+                                </button>
                             </div>
                         </form>
                     </div>
