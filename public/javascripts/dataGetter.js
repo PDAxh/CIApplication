@@ -170,7 +170,9 @@ exports.getHtmlDetailReport = function (host, jobName, buildNr) {
             json: true
         };
         request.get(gethtml, function(error, response, body){
-            var data = body;
+            open( reportLink, function (err) {
+                if ( err ) throw err;
+            });
 
         });
     }
