@@ -48,6 +48,12 @@ app.post('/notification', function(req, res, next) {
     dataGetter.getCheckstyleReport('http://10.90.131.114:8080', req.body.name, req.body.build.number);
 });
 
+app.post('/result', function(req, res, next){
+    console.log("checking for detailed report");
+    HtmlDetailReport.getHtmlDetailReport('http://10.90.131.114:8080',req.body.name, req.body.build.number)
+
+});
+
 app.use('/', index);
 app.use('/users', users);
 

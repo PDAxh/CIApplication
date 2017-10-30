@@ -143,3 +143,32 @@ exports.getAllJobNames = function (host) {
         console.log(jobsList);
     });
 };
+
+exports.getHtmlDetailReport = function (host) {
+
+    var reportLink = 'http://10.90.131.114:8080/job/Mavenproject/HTML_Report/';
+    //var reportLink = host + '/job/' + jobName + '/' + buildNr + '/HTML_Report';
+    //TODO get html link.
+    console.log(reportLink);
+
+    function getDetailResults(req) {
+        return url.format({
+            protocol: req.protocol,
+            host: req.get(reportLink),
+            pathname: req.originalUrl
+        });
+        var options = {
+            url: reportLink,
+            'auth': {
+                'user': 'admin1',
+                'pass': 'admin1',
+                'sendImmediately': true
+            },
+            headers: {
+                'User-Agent': 'request'
+                },
+                 json: true
+
+        }
+    }
+};
