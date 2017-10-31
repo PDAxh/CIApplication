@@ -1,4 +1,5 @@
 const request = require('request');
+const index = require('../../routes/index.js');
 
 /*var gitProject; // = gitusername/projectname
 var commitIdentifier;
@@ -93,32 +94,7 @@ exports.getFindbugsReport = function (host, jobName, buildNr) {
     });
 };
 
-//Get checkstyle report data on specific job and build
-exports.getCheckstyleReport = function (host, jobName, buildNr) {
-    var reportLink = host + '/job/' + jobName + '/' + buildNr + '/checkstyleResult/api/json';
-
-    var options = {
-        url: reportLink,
-        'auth': {
-            'user': 'admin1',
-            'pass': 'admin1',
-            'sendImmediately': true
-        },
-        headers: {
-            'User-Agent': 'request'
-        },
-        json: true
-    };
-
-    request.get(options, function(error, response, body){
-        /*console.log('\n----' + jobName + ' Checkstyle results ----');
-        console.log('Number of new warnings: ' + body.numberOfNewWarnings);
-        console.log('Number of warnings: ' + body.numberOfWarnings);*/
-        return body.numberOfWarnings;
-    });
-};
-
-// Creates array filled with job objects
+// 1. Creates array filled with job objects, gathers job names
 exports.getAllJobs = function (host) {
     var jobsList = [];
     var link = host + '/api/json?pretty=true';
@@ -135,31 +111,80 @@ exports.getAllJobs = function (host) {
         json: true
     };
     request.get(options, function(error, response, body){
-
-        /*body.jobs.each(function() {
+        body.jobs.forEach(function(index) {
             jobsList.push({
-                name: body.jobs[i].name,
-                checkstyle: exports.getCheckstyleReport(host, body.jobs[i].name, 'lastBuild'),
-                findbugs: 17});
-        });*/
-        for(var i = 0; i < body.jobs.length; i++) {
-            jobsList.push({
-                name: body.jobs[i].name,
-                checkstyle: exports.getCheckstyleReport(host, body.jobs[i].name, 'lastBuild'),
-                findbugs: 17
+                name: index.name,
+                checkstyle: 0,
+                findbugs: 0
             });
-        }
-        //exports.getCheckstyleReport(host, jobsList[8].name, 'lastBuild');
-
-        /*loadcheckstyleResults(jobsList);
-        function loadcheckstyleResults(jobsList) {
-            for(var i = 0; i < jobsList.length; i++) {
-                jobsList[i].checkstyle = exports.getCheckstyleReport(host, jobsList[i].name, 'lastBuild');
-            }
-        }*/
-        index.loadJobs(jobsList);
+        });
+        getCheckStyle(host, 'lastBuild', jobsList);
     });
+
 };
+
+// 2. Gathers checkstyle-results
+function getCheckStyle(host, buildNr, jobsList) {
+    var i = 0;  // counter
+    // Looping through joblist, attaching checkstyle-results to each job object
+    jobsList.forEach(function(job) {
+        var reportLink = host + '/job/' + job.name + '/' + buildNr + '/checkstyleResult/api/json';
+
+        var options = {
+            url: reportLink,
+            'auth': {
+                'user': 'admin1',
+                'pass': 'admin1',
+                'sendImmediately': true
+            },
+            headers: {
+                'User-Agent': 'request'
+            },
+            json: true
+        };
+
+        request.get(options, function(error, response, body){
+            jobsList[i].checkstyle = body.numberOfWarnings;
+            i++;
+            if(i === jobsList.length)
+                getFindbugs(host, 'lastBuild', jobsList);   //Goto step 3, gather findbugs-results
+        });
+    });
+}
+
+// 3. Gathers findbugs-results
+function getFindbugs(host, buildNr, jobsList) {
+    var i = 0;
+
+    jobsList.forEach(function(job) {
+        var reportLink = host + '/job/' + job.name + '/' + buildNr + '/findbugsResult/api/json';
+
+        var options = {
+            url: reportLink,
+            'auth': {
+                'user': 'admin1',
+                'pass': 'admin1',
+                'sendImmediately': true
+            },
+            headers: {
+                'User-Agent': 'request'
+            },
+            json: true
+        };
+
+        request.get(options, function(error, response, body){
+            console.log('\n---- Findbugs results ----');
+            console.log('Number of warnings: ' + body.numberOfWarnings);
+                //if(body.numberOfWarnings == null)
+            jobsList[i].findbugs = body.numberOfWarnings;
+            i++;
+            if(i === jobsList.length)
+                index.loadJobs(jobsList);   //Send for building table
+        });
+    });
+
+
+}
 
 // Get a list of all job names on Jenkins server
 exports.getAllJobNames = function (host) {
