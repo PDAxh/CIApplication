@@ -74,6 +74,7 @@ label {
 /* results.hbs */
 #resultsPage {
     background: url("../images/skyline.jpg");
+    background-size: cover;
 }
 #semiBlackHead{
     background: rgba(0, 0, 0, 0.7);
@@ -170,6 +171,7 @@ div.dataTables_wrapper div.dataTables_info {
 
         #frontPage {
             background: url("../images/largeScreen.jpg");
+
             /* Free for commercial use: Photo by Lionel Paulus on Unsplash.com
             https://unsplash.com/photos/da70lgFwlro*/
             height: 100vh;
@@ -223,12 +225,14 @@ div.dataTables_wrapper div.dataTables_info {
 
         #frontPage {
             background: url("../images/largeScreen.jpg");
+            background-size: cover;
         }
     }
     @media (min-width: 2100px) {
 
         #frontPage {
             background: url("../images/londonWide.jpg");
+            background-size: cover;
         }
     }
 }
