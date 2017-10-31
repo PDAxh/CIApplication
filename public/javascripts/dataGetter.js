@@ -1,5 +1,4 @@
 const request = require('request');
-var index = require('../../routes/index');
 
 /*var gitProject; // = gitusername/projectname
 var commitIdentifier;
@@ -112,11 +111,10 @@ exports.getCheckstyleReport = function (host, jobName, buildNr) {
     };
 
     request.get(options, function(error, response, body){
-        var data = body;
-        console.log('\n---- Checkstyle results ----');
-        console.log('Number of new warnings: ' + data.numberOfNewWarnings);
-        console.log('Number of warnings: ' + data.numberOfWarnings);
-        return data.numberOfWarnings;
+        /*console.log('\n----' + jobName + ' Checkstyle results ----');
+        console.log('Number of new warnings: ' + body.numberOfNewWarnings);
+        console.log('Number of warnings: ' + body.numberOfWarnings);*/
+        return body.numberOfWarnings;
     });
 };
 
@@ -138,28 +136,35 @@ exports.getAllJobs = function (host) {
     };
     request.get(options, function(error, response, body){
 
+        /*body.jobs.each(function() {
+            jobsList.push({
+                name: body.jobs[i].name,
+                checkstyle: exports.getCheckstyleReport(host, body.jobs[i].name, 'lastBuild'),
+                findbugs: 17});
+        });*/
         for(var i = 0; i < body.jobs.length; i++) {
             jobsList.push({
                 name: body.jobs[i].name,
-                checkstyle: 0,
-                findbugs: 17});
+                checkstyle: exports.getCheckstyleReport(host, body.jobs[i].name, 'lastBuild'),
+                findbugs: 17
+            });
         }
+        //exports.getCheckstyleReport(host, jobsList[8].name, 'lastBuild');
 
-        //loadcheckstyleResults(jobsList);
-        /*function loadcheckstyleResults(jobsList) {
+        /*loadcheckstyleResults(jobsList);
+        function loadcheckstyleResults(jobsList) {
             for(var i = 0; i < jobsList.length; i++) {
                 jobsList[i].checkstyle = exports.getCheckstyleReport(host, jobsList[i].name, 'lastBuild');
             }
-
         }*/
-
         index.loadJobs(jobsList);
     });
-}
+};
 
 // Get a list of all job names on Jenkins server
 exports.getAllJobNames = function (host) {
-    var jobsList = [];
+    var reportLink = 'http://10.90.131.114:8080/job/Mavenproject/HTML_Report/';
+    //var reportLink = host + '/job/' + jobName + '/' + buildNr + '/HTML_Report';
     var link = host + '/api/json?pretty=true';
     var options = {
         url: link,
@@ -173,41 +178,20 @@ exports.getAllJobNames = function (host) {
         },
         json: true
     };
-    request.get(options, function(error, response, body){
 
-        for(var i = 0; i < body.jobs.length; i++) {
+    request.get(options, function(error, response, body){
+        console.log(body.jobs);
+        var jobsList = [];
+        for(i = 0; i < body.jobs.length; i++) {
             jobsList.push(body.jobs[i].name);
         }
-        index.loadJobs(jobsList);
+        console.log(jobsList);
     });
 
-};
-
-exports.getHtmlDetailReport = function (host) {
-
-    var reportLink = 'http://10.90.131.114:8080/job/Mavenproject/HTML_Report/';
-    //var reportLink = host + '/job/' + jobName + '/' + buildNr + '/HTML_Report';
-    //TODO get html link.
-    console.log(reportLink);
-
-    function getDetailResults(req) {
-        return url.format({
-            protocol: req.protocol,
-            host: req.get(reportLink),
-            pathname: req.originalUrl
+    request.get(options, function (error, response, body) {
+        open(reportLink, function (err) {
+            if (err) throw err;
         });
-        var options = {
-            url: reportLink,
-            'auth': {
-                'user': 'admin1',
-                'pass': 'admin1',
-                'sendImmediately': true
-            },
-            headers: {
-                'User-Agent': 'request'
-                },
-                 json: true
 
-        }
-    }
+    });
 };
