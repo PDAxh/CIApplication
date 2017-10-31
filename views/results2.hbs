@@ -41,23 +41,26 @@
 
 
 <main>
-    <div id="resultsTable">
+    <div class="container-fluid">
+        <div id="resultsTable">
 
-        <div class="table-responsive">
-            <table class="table table-striped table-sm table-bordered">
-                <thead id="semiBlackHead">
-                <tr>
-                    <th class="col-xs-2.75">Project</th>
-                    <th class="col-xs-2.75">Last push</th>
-                    <th class="col-xs-2.75">Bugs</th>
-                    <th class="col-xs-2.75">Style errors</th>
-                    <th class="col-xs-1">Details</th>
-                </tr>
-                </thead>
-                <tbody id="bleachedBody">
-                {{{insertRow}}}
-                </tbody>
-            </table>
+            <div class="table-responsive">
+
+                <table class="table table-striped table-sm table-bordered">
+                    <thead id="semiBlackHead">
+                    <tr>
+                        <th class="col-md-5ths col-xs-6">Project</th>
+                        <th class="col-md-5ths col-xs-6">Last push</th>
+                        <th class="col-md-2ths col-xs-6">Bugs</th>
+                        <th class="col-md-2ths col-xs-6">Style errors</th>
+                        <th class="col-md-5ths col-xs-6">Details</th>
+                    </tr>
+                    </thead>
+                    <tbody id="bleachedBody">
+                    {{{insertRow}}}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
