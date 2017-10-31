@@ -112,11 +112,10 @@ exports.getCheckstyleReport = function (host, jobName, buildNr) {
     };
 
     request.get(options, function(error, response, body){
-        var data = body;
-        console.log('\n---- Checkstyle results ----');
-        console.log('Number of new warnings: ' + data.numberOfNewWarnings);
-        console.log('Number of warnings: ' + data.numberOfWarnings);
-        return data.numberOfWarnings;
+        /*console.log('\n----' + jobName + ' Checkstyle results ----');
+        console.log('Number of new warnings: ' + body.numberOfNewWarnings);
+        console.log('Number of warnings: ' + body.numberOfWarnings);*/
+        return body.numberOfWarnings;
     });
 };
 
@@ -138,24 +137,30 @@ exports.getAllJobs = function (host) {
     };
     request.get(options, function(error, response, body){
 
+        /*body.jobs.each(function() {
+            jobsList.push({
+                name: body.jobs[i].name,
+                checkstyle: exports.getCheckstyleReport(host, body.jobs[i].name, 'lastBuild'),
+                findbugs: 17});
+        });*/
         for(var i = 0; i < body.jobs.length; i++) {
             jobsList.push({
                 name: body.jobs[i].name,
-                checkstyle: 0,
-                findbugs: 17});
+                checkstyle: exports.getCheckstyleReport(host, body.jobs[i].name, 'lastBuild'),
+                findbugs: 17
+            });
         }
+        //exports.getCheckstyleReport(host, jobsList[8].name, 'lastBuild');
 
-        //loadcheckstyleResults(jobsList);
-        /*function loadcheckstyleResults(jobsList) {
+        /*loadcheckstyleResults(jobsList);
+        function loadcheckstyleResults(jobsList) {
             for(var i = 0; i < jobsList.length; i++) {
                 jobsList[i].checkstyle = exports.getCheckstyleReport(host, jobsList[i].name, 'lastBuild');
             }
-
         }*/
-
         index.loadJobs(jobsList);
     });
-}
+};
 
 // Get a list of all job names on Jenkins server
 exports.getAllJobNames = function (host) {
