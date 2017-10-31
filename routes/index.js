@@ -20,7 +20,7 @@ router.get('/results2', function(req, res, next) {
     exports.loadJobs = function (jobsList) {
         var table = "";
         for(var i = 0; i < jobsList.length; i++) {
-            table += '<tr><td>' + jobsList[i].name + '</td><td>' + i + '</td><td>' + jobsList[i].checkstyle + '</td><td>' + jobsList[i].findbugs + '</td></tr>';
+            table += '<tr><td>' + jobsList[i].name + '</td><td>' + i + '</td><td>' + jobsList[i].checkstyle + '</td><td>' + jobsList[i].findbugs + '</td></tr> '+ jobsList[i].detailreport + '</td></tr>';
         }
         res.render('results2', { title: 'reportsite2', insertRow: table });
     };

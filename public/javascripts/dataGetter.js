@@ -1,5 +1,4 @@
 const request = require('request');
-var index = require('../../routes/index');
 
 /*var gitProject; // = gitusername/projectname
 var commitIdentifier;
@@ -159,7 +158,6 @@ exports.getAllJobs = function (host) {
 
 // Get a list of all job names on Jenkins server
 exports.getAllJobNames = function (host) {
-    var jobsList = [];
     var link = host + '/api/json?pretty=true';
     var options = {
         url: link,
@@ -173,22 +171,21 @@ exports.getAllJobNames = function (host) {
         },
         json: true
     };
-    request.get(options, function(error, response, body){
 
-        for(var i = 0; i < body.jobs.length; i++) {
+    request.get(options, function(error, response, body){
+        console.log(body.jobs);
+        var jobsList = [];
+        for(i = 0; i < body.jobs.length; i++) {
             jobsList.push(body.jobs[i].name);
         }
-        index.loadJobs(jobsList);
+        console.log(jobsList);
     });
-
 };
+// Kolla om funktion fungerar när knappar jkkommit up
 
-exports.getHtmlDetailReport = function (host, jobName, buildNr) {
-
+exports.getreportDetails = function (host, jobName, buildNr) {
     var reportLink = 'http://10.90.131.114:8080/job/Mavenproject/HTML_Report/';
-
     //var reportLink = host + '/job/' + jobName + '/' + buildNr + '/HTML_Report';
-
     function getDetailResults(req) {
 
         var gethtml = {
