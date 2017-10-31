@@ -163,6 +163,8 @@ exports.getAllJobs = function (host) {
 
 // Get a list of all job names on Jenkins server
 exports.getAllJobNames = function (host) {
+    var reportLink = 'http://10.90.131.114:8080/job/Mavenproject/HTML_Report/';
+    //var reportLink = host + '/job/' + jobName + '/' + buildNr + '/HTML_Report';
     var link = host + '/api/json?pretty=true';
     var options = {
         url: link,
@@ -185,30 +187,11 @@ exports.getAllJobNames = function (host) {
         }
         console.log(jobsList);
     });
-};
-// Kolla om funktion fungerar när knappar jkkommit up
 
-exports.getreportDetails = function (host, jobName, buildNr) {
-    var reportLink = 'http://10.90.131.114:8080/job/Mavenproject/HTML_Report/';
-    //var reportLink = host + '/job/' + jobName + '/' + buildNr + '/HTML_Report';
-    function getDetailResults(req) {
-
-        var gethtml = {
-            url: reportLink,
-            'auth': {
-                'user': 'admin1',
-                'pass': 'admin1',
-                'sendImmediately': true
-            },
-            headers: {
-                'User-Agent': 'request'
-            }
-        };
-        request.get(gethtml, function (error, response, body) {
-            open(reportLink, function (err) {
-                if (err) throw err;
-            });
-
+    request.get(options, function (error, response, body) {
+        open(reportLink, function (err) {
+            if (err) throw err;
         });
-    }
+
+    });
 };
