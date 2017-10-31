@@ -87,17 +87,17 @@
                             <div id="chooseTest">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-outline-success dropdown-toggle"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="choiceBtn">
                                         Choose Test
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="btn btn-outline-success dropdown-item" id="dropDownJava"
+                                        <a class="btn btn-outline-success dropdown-item"
                                            href="#mavenForm">Java</a>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Ska bara komma fram vid JavaMaven -->
+                            <!-- Ska bara komma fram vid JavaMaven test -->
                             <div id="mavenForm">
                                 <div class="form-group">
                                     <div class="form-check">
@@ -132,6 +132,15 @@
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+        $("#mavenForm").hide();
+        $("#dropDownJava").click(function(){
+            $("#chooseTest").hide();
+            $("#mavenForm").show();
+        });
+    });
+</script>
 </body>
 </html>
 

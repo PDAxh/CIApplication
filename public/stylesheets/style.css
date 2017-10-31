@@ -74,6 +74,7 @@ label {
 /* results.hbs */
 #resultsPage {
     background: url("../images/skyline.jpg");
+    background-size: cover;
 }
 #semiBlackHead{
     background: rgba(0, 0, 0, 0.7);
@@ -81,7 +82,9 @@ label {
     color: #ffffff;
 
 
-}
+} #choiceBtn{
+    margin-bottom: 10%;
+  }
 
 .th {
     width: 100%;
@@ -170,6 +173,7 @@ div.dataTables_wrapper div.dataTables_info {
 
         #frontPage {
             background: url("../images/largeScreen.jpg");
+
             /* Free for commercial use: Photo by Lionel Paulus on Unsplash.com
             https://unsplash.com/photos/da70lgFwlro*/
             height: 100vh;
@@ -195,24 +199,57 @@ div.dataTables_wrapper div.dataTables_info {
     }
 
     .col-xs-5ths {
-        width: 20%;
+        width: 26%;
         float: left;
     }
     @media (min-width: 768px) {
         .col-sm-5ths {
-            width: 20%;
+            width: 26%;
             float: left;
         }
     }
     @media (min-width: 992px) {
         .col-md-5ths {
-            width: 20%;
+            width: 26%;
             float: left;
         }
     }
     @media (min-width: 1200px) {
         .col-lg-5ths {
-            width: 20%;
+            width: 26%;
+            float: left;
+        }
+    }
+
+    .col-xs-2ths,
+    .col-sm-2ths,
+    .col-md-2ths,
+    .col-lg-2ths {
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .col-xs-2ths {
+        width: 11%;
+        float: left;
+    }
+    @media (min-width: 768px) {
+        .col-sm-2ths {
+            width: 11%;
+            float: left;
+        }
+    }
+    @media (min-width: 992px) {
+        .col-md-2ths {
+            width: 11%;
+            float: left;
+        }
+    }
+    @media (min-width: 1200px) {
+        .col-lg-2ths {
+            width: 11%;
             float: left;
         }
     }
@@ -223,12 +260,14 @@ div.dataTables_wrapper div.dataTables_info {
 
         #frontPage {
             background: url("../images/largeScreen.jpg");
+            background-size: cover;
         }
     }
     @media (min-width: 2100px) {
 
         #frontPage {
             background: url("../images/londonWide.jpg");
+            background-size: cover;
         }
     }
 }

@@ -20,7 +20,7 @@
       "scm": [
         {
           "git": {
-            "url": "Ahitsot.git",
+            "url": "",
             "clean": {
               "after": true
             },
@@ -30,12 +30,23 @@
             "git-config-email": "confemail"
           }
         }
+      ],
+      "notifications": [
+        {
+          "http": {
+            "url": "http://10.90.131.114:3300/notification",
+            "format": "json",
+            "event": "finalized",
+            "timeout": 30000,
+            "log": 0
+          }
+        }
       ]
     }
   },
   {
     "job": {
-      "name": "testproject22-maven-job",
+      "name": "-maven-job",
       "node": "master",
       "builders": [
         {
@@ -56,7 +67,7 @@
       "properties": [
         {
           "github": {
-            "url": "Ahitsot.git"
+            "url": ""
           }
         }
       ],

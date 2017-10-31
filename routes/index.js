@@ -8,11 +8,12 @@ var dataGetter = require('../public/javascripts/dataGetter');
   res.render('index', { title: 'Index' });
 });
 
+/*
 router.get('/results', function(req, res, next) {
     res.render('results', { title: 'reportsite' });
-});
+}); */
 
-router.get('/results2', function(req, res, next) {
+router.get('/results', function(req, res, next) {
     //Getting Jenkins jobs
     dataGetter.getAllJobs('http://10.90.131.114:8080');
 
@@ -23,7 +24,7 @@ router.get('/results2', function(req, res, next) {
         for(var i = 0; i < jobsList.length; i++) {
             table += '<tr><td>' + jobsList[i].name + '</td><td>' + i + '</td><td>' + jobsList[i].findbugs + '</td><td>' + jobsList[i].checkstyle + '</td></tr>';
         }
-        res.render('results2', { title: 'reportsite2', insertRow: table });
+        res.render('results', { title: 'reportsite', insertRow: table });
     };
 });
 
