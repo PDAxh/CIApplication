@@ -49,10 +49,10 @@ app.post('/notification', function(req, res, next) {
     dataGetter.getFindbugsReport('http://10.90.131.114:8080', req.body.name, req.body.build.number);
     dataGetter.getCheckstyleReport('http://10.90.131.114:8080', req.body.name, req.body.build.number);
 });
-
+// Getting the detailed html report from jenkins.
 app.post('/result', function(req, res, next){
     console.log("checking for detailed report");
-    HtmlDetailReport.getHtmlDetailReport('http://10.90.131.114:8080',req.body.name, req.body.build.number)
+    dataGetter.getHtmlDetailReport(reportLink,req.body.name, req.body.build.number)
 
 });
 
