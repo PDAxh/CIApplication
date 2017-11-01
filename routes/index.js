@@ -19,9 +19,10 @@ router.get('/results', function(req, res, next) {
 
     //Builds the table and then renders the results site
     exports.loadJobs = function (jobsList) {
+        console.log(jobsList);
         var table = "";
         for(var i = 0; i < jobsList.length; i++) {
-            table += '<tr><td>' + jobsList[i].name + '</td><td>' + i + '</td><td>' + jobsList[i].findbugs + '</td><td>' + jobsList[i].checkstyle + '</td></tr>';
+            table += '<tr> <td class="col-md-5ths col-xs-6">' + jobsList[i].name + '</td> <td class="col-md-5ths col-xs-6">' + i + '</td> <td class="col-md-2ths col-xs-6">' + jobsList[i].findbugs + '</td> <td class="col-md-2ths col-xs-6">' + jobsList[i].checkstyle + ' </td> <td class="col-md-5ths col-xs-6">' + '</td><td>' + '"null"';
         }
         res.render('results', { title: 'reportsite', insertRow: table });
     };
