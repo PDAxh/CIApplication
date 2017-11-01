@@ -23,8 +23,8 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
-    <!-- JS
-    <script src="../public/javascripts/updateResults.js"></script> -->
+    <!-- JS -->
+
     <script src="../public/javascripts/jobCreator.js"></script>
 
     <title>Continuous integration for GIT repositories</title>
@@ -56,7 +56,6 @@
     </nav>
 </header>
 
-
 <body id="frontPage">
 <!-- This is the div that I want to center verically between the navigation bar and the div bellow-->
 <div id="flexh">
@@ -87,7 +86,8 @@
                             <div id="chooseTest">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-outline-success dropdown-toggle"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="choiceBtn">
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                            id="choiceBtn">
                                         Choose Test
                                     </button>
                                     <div class="dropdown-menu">
@@ -117,8 +117,7 @@
                                 </div>
                             </div>
                             <div>
-                                <!--      $('.FindBugs').prop('indeterminate', true)     -->
-                                <!--      $('.CheckStyle').prop('indeterminate', true)     -->
+
                                 <button class="btn btn-outline-success" id="submitRepo"
                                         onclick="storeRepo()"
                                         type="submit" value="Submit">
@@ -133,9 +132,9 @@
     </div>
 </div>
 <script>
-    $(function(){
-        $("#mavenForm").hide();
-        $("#dropDownJava").click(function(){
+    $(function () {    /* Skapa en ny funktion för varje nytt test med samma struktur!  */
+        $("#mavenForm").hide();     /* Dölj varje div hanterar det nya testet! */
+        $("#dropDownJava").click(function () {
             $("#chooseTest").hide();
             $("#mavenForm").show();
         });
