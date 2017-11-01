@@ -22,7 +22,11 @@ router.get('/results', function(req, res, next) {
         console.log(jobsList);
         var table = "";
         for(var i = 0; i < jobsList.length; i++) {
-            table += '<tr> <td class="col-md-5ths col-xs-6">' + jobsList[i].name + '</td> <td class="col-md-5ths col-xs-6">' + i + '</td> <td class="col-md-2ths col-xs-6">' + jobsList[i].findbugs + '</td> <td class="col-md-2ths col-xs-6">' + jobsList[i].checkstyle + ' </td> <td class="col-md-5ths col-xs-6">' +  'null' + ' </td> </tr>' ;
+            table += '<tr><td class="col-md-5ths col-xs-6">' + jobsList[i].name + '</td>' +
+                '<td class="col-md-5ths col-xs-6">' + i + '</td>' +
+                '<td class="col-md-2ths col-xs-6">' + jobsList[i].findbugs + '</td>' +
+                '<td class="col-md-2ths col-xs-6">' + jobsList[i].checkstyle + '</td>' +
+                '<td class="col-md-5ths col-xs-6">' +  'null' + '</td></tr>' ;
         }
         res.render('results', { title: 'reportsite', insertRow: table });
     };
