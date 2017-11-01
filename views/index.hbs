@@ -116,12 +116,19 @@
                                     </div>
                                 </div>
                             </div>
+                        </form>
+                        <form class="form-inline">
                             <div>
-
                                 <button class="btn btn-outline-success" id="submitRepo"
                                         onclick="storeRepo()"
                                         type="submit" value="Submit">
                                     Submit
+                                </button>
+                            </div>
+                            <div id="regretPanel">
+                                <button class="btn btn-outline-danger" id="regret"
+                                        type="submit" value="Back">
+                                    Back
                                 </button>
                             </div>
                         </form>
@@ -133,10 +140,19 @@
 </div>
 <script>
     $(function () {    /* Skapa en ny funktion för varje nytt test med samma struktur!  */
-        $("#mavenForm").hide();     /* Dölj varje div hanterar det nya testet! */
+        $("#mavenForm").hide();
+        $("#regretPanel").hide();
+
+        /* Dölj varje div hanterar det nya testet! */
         $("#dropDownJava").click(function () {
             $("#chooseTest").hide();
             $("#mavenForm").show();
+            $("#regretPanel").show();
+        });
+        $("#regret").click(function () {
+            $("#mavenForm").hide();
+            $("#regretPanel").hide();
+            $("#chooseTest").show();
         });
     });
 </script>

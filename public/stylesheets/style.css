@@ -81,10 +81,15 @@ label {
     font-family: 'Karla', sans-serif;
     color: #ffffff;
 
+}
+#choiceBtn{
+    margin-bottom:
+            10%;
+}
 
-} #choiceBtn{
-    margin-bottom: 10%;
-  }
+#regret{
+    margin-left: 20%;
+}
 
 .th {
     width: 100%;
