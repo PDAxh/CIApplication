@@ -12,15 +12,15 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
         console.log('findbugs and checkstyles')
     }
 
-    else if ((checkCheck === '') && (checkBugs === 'on')) {
+    else if ((checkCheck !== 'on') && (checkBugs === 'on')) {
         var data = fs.readFileSync('./javamaven_findbug.yml', 'utf8');
         console.log('findbugs only')
     }
-    else if ((checkCheck === 'on') && (checkBugs === '')) {
+    else if ((checkCheck === 'on') && (checkBugs !== 'on')) {
         var data = fs.readFileSync('./javamaven_checkstyles.yml', 'utf8');
         console.log('checksings only')
     }
-    else if ((checkCheck === '') && (checkBugs === '')) {
+    else if ((checkCheck !== 'on') && (checkBugs !== 'on')) {
         var data = fs.readFileSync('./javamaven_no_check_and_bugs.yml', 'utf8');
         console.log('just simple synk with CI')
     }
