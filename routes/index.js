@@ -19,7 +19,6 @@ router.get('/results', function (req, res, next) {
 
     //Builds the table and then renders the results site
     exports.loadJobs = function (jobsList) {
-        console.log(jobsList);
         var table = "";
         for(var i = 0; i < jobsList.length; i++) {
             table += '<tr><td class="col-md-5ths col-xs-6" id="cProject">' + jobsList[i].name + '</td>' +

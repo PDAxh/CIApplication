@@ -94,13 +94,90 @@ function getFindbugs(host, buildNr, jobsList) {
             }
             i++;
             if(i === jobsList.length)
+                //getCommitInfo(host, buildNr, jobsList);
                 index.loadJobs(jobsList);   //Send for building table
         });
     });
 }
 
-function getLatestCommit() {
+// 4. Get Git project name,  commit-identifier, time of commit
+function getCommitInfo(host, buildNr, jobsList) {
+    var i= 0;
+    var gitProject; // = gitusername/projectname
+    var commitIdentifier;
+    var fullLink; // Link is used to access github api and extract username + date & time of specific commit
 
+    jobsList.forEach(function(job) {
+        fullLink = host + '/job/Mavenproject/' + buildNr + '/api/xml';
+        var options = {
+            url: fullLink,
+            'auth': {
+                'user': 'admin1',
+                'pass': 'admin1',
+                'sendImmediately': true
+            },
+            json: true
+
+        };
+        request.get(options, function(error, response, body){
+            console.log(body);
+            //console.log(x);
+            /*console.log(body.actions[3]);
+            if (body.actions[3].lastBuiltRevision.SHA1 !== null)
+                commitIdentifier = body.actions[3].lastBuiltRevision.SHA1;
+            else
+                commitIdentifier = 'null';
+            console.log(job.name + ' CommitIdentifier: ' + commitIdentifier);
+
+            var data = String(body.actions[3].remoteUrls);
+            var splitter = data.split('com/');
+            gitProject = splitter[1];
+            console.log(job.name + ' Git Project: ' + gitProject);
+
+            var nextLink = 'https://api.github.com/repos/' + gitProject + '/commits/' + commitIdentifier;
+            console.log('Full get link is: ' + fullLink);
+            console.log('Time was: ' + body.actions.changeSet);
+
+            i++;
+            if(i === jobsList.length)*/
+            index.loadJobs(jobsList);   //Send for building table
+            //getCommitInfo(nextLink);
+        });
+    });
+
+}
+
+//Get user info on who made the commit, and date&time of commit
+function getCommitInfo2(fullLink) {
+    var author;
+    var gitUserName;
+    var dateTime;
+    var date;
+    var time;
+
+
+    var options = {
+        url: fullLink,
+        headers: {
+            'User-Agent': 'request'
+        },
+        json: true
+    };
+
+    request.get(options, function (error, response, body) {
+        author = body.commit.author.name;
+        gitUserName = body.author.login;
+        dateTime = body.commit.author.date;
+        var dateTimeS = dateTime.split('T');
+        date = dateTimeS[0];
+        var timeS = dateTimeS[1].split('Z');
+        time = timeS[0];
+
+        console.log('LAST COMMIT INFO:');
+        console.log('Author: ' + author);
+        console.log('Git username: ' + gitUserName);
+        console.log('Date: ' + date + '\nTime: ' + time);
+    });
 }
 
 // Get a list of all job names on Jenkins server
@@ -137,71 +214,3 @@ exports.getAllJobNames = function (host) {
 
     });
 };
-
-/*var gitProject; // = gitusername/projectname
-var commitIdentifier;
-
-var fullLink; // Link is used to access github api and extract username + date & time of specific commit
-
-var author;
-var gitUserName;
-var dateTime;
-var date;
-var time;
-
-
-
-// Get Git project name and commit-identifier
-var options = {
-    url: 'http://10.90.131.179:8080/job/Mavenproject/62/api/json?pretty=true',
-    'auth': {
-        'user': 'admin1',
-        'pass': 'admin1',
-        'sendImmediately': true
-    },
-    json: true
-
-};
-request.get(options, function(error, response, body){
-    commitIdentifier = body.actions[3].lastBuiltRevision.SHA1;
-    console.log('CommitIdentifier: ' + commitIdentifier);
-
-    var data = String(body.actions[3].remoteUrls);
-    var splitter = data.split('com/');
-    gitProject = splitter[1];
-    console.log('Git Project: ' + gitProject);
-
-    fullLink = 'https://api.github.com/repos/' + gitProject + '/commits/' + commitIdentifier;
-    console.log('Full get link is: ' + fullLink);
-    console.log('');
-
-    getCommitInfo();
-});
-
-
-//Get user info on who made the commit, and date&time of commit
-function getCommitInfo() {
-    var options = {
-        url: fullLink,
-        headers: {
-            'User-Agent': 'request'
-        },
-        json: true
-    };
-
-    request.get(options, function(error, response, body){
-        data = body;
-        author = body.commit.author.name;
-        gitUserName = body.author.login;
-        dateTime = body.commit.author.date;
-        var dateTimeS = dateTime.split('T');
-        date = dateTimeS[0];
-        var timeS = dateTimeS[1].split('Z');
-        time = timeS[0];
-
-        console.log('LAST COMMIT INFO:');
-        console.log('Author: ' + author);
-        console.log('Git username: ' + gitUserName);
-        console.log('Date: ' + date + '\nTime: ' + time);
-    });
-}*/

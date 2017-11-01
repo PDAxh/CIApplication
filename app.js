@@ -37,7 +37,7 @@ app.post('/', function(req, res, next) {
     res.render('index');
 });
 
-//Jenkins will notify after job(build) is complete
+//Jenkins will notify after job(build) is finilized
 app.post('/notification', function(req, res, next) {
     console.log('\n---- Incoming notification from Jenkins ----');
     console.log('Job name: ' + req.body.name);
@@ -45,6 +45,8 @@ app.post('/notification', function(req, res, next) {
     console.log('Git url: ' + req.body.build.scm.url);
     console.log('Commit: ' + req.body.build.scm.commit);
     console.log('Build Status: ' + req.body.build.status);
+
+
 
     dataGetter.getFindbugsReport('http://10.90.131.114:8080', req.body.name, req.body.build.number);
     dataGetter.getCheckstyleReport('http://10.90.131.114:8080', req.body.name, req.body.build.number);
