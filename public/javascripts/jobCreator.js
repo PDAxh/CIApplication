@@ -13,7 +13,7 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
     }
 
     else if ((checkCheck === '') && (checkBugs === 'on')) {
-        var data = fs.readFileSync('./javamaven_findbugs.yml', 'utf8');
+        var data = fs.readFileSync('./javamaven_findbug.yml', 'utf8');
         console.log('findbugs only')
     }
     else if ((checkCheck === 'on') && (checkBugs === '')) {
