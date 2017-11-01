@@ -9,7 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var jobCreator = require('./public/javascripts/jobCreator');
-var dataGetter = require('./public/javascripts/dataGetter')
+var dataGetter = require('./public/javascripts/dataGetter');
 
 var app = express();
 

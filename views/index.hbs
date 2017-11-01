@@ -113,21 +113,22 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <form class="form-inline">
-                            <div>
-                                <button class="btn btn-outline-success" id="submitRepo"
-                                        onclick="storeRepo()"
-                                        type="submit" value="Submit">
-                                    Submit
-                                </button>
-                            </div>
-                            <div id="regretPanel">
-                                <button class="btn btn-outline-danger" id="regret"
-                                        type="submit">
-                                    Back
-                                </button>
-                            </div>
+
+                            <form class="form-inline">
+                                <div>
+                                    <button class="btn btn-outline-success" id="submitRepo"
+                                            onclick="storeRepo()"
+                                            type="submit" value="Submit">
+                                        Submit
+                                    </button>
+                                </div>
+                                <div id="regretPanel">
+                                    <button class="btn btn-outline-danger" id="regret"
+                                            type="submit">
+                                        Back
+                                    </button>
+                                </div>
+                            </form>
                         </form>
                     </div>
                 </div>
@@ -147,11 +148,14 @@
             $("#mavenForm").show();
             $("#regretPanel").show();
         });
-        $("#regret").click(function () {
-            $("#mavenForm").hide();
-            $("#regretPanel").hide();
-            $("#chooseTest").show();
-        });
+    });
+
+
+    $("#regret").click(function () {
+        $("#mavenForm").hide();
+        $("#regretPanel").hide();
+        $("#chooseTest").show();
+
     });
 </script>
 </body>
