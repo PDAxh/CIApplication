@@ -97,7 +97,9 @@ function getFindbugs(host, buildNr, jobsList) {
                 index.loadJobs(jobsList);   //Send for building table
         });
     });
+}
 
+function getLatestCommit() {
 
 }
 
@@ -135,3 +137,71 @@ exports.getAllJobNames = function (host) {
 
     });
 };
+
+/*var gitProject; // = gitusername/projectname
+var commitIdentifier;
+
+var fullLink; // Link is used to access github api and extract username + date & time of specific commit
+
+var author;
+var gitUserName;
+var dateTime;
+var date;
+var time;
+
+
+
+// Get Git project name and commit-identifier
+var options = {
+    url: 'http://10.90.131.179:8080/job/Mavenproject/62/api/json?pretty=true',
+    'auth': {
+        'user': 'admin1',
+        'pass': 'admin1',
+        'sendImmediately': true
+    },
+    json: true
+
+};
+request.get(options, function(error, response, body){
+    commitIdentifier = body.actions[3].lastBuiltRevision.SHA1;
+    console.log('CommitIdentifier: ' + commitIdentifier);
+
+    var data = String(body.actions[3].remoteUrls);
+    var splitter = data.split('com/');
+    gitProject = splitter[1];
+    console.log('Git Project: ' + gitProject);
+
+    fullLink = 'https://api.github.com/repos/' + gitProject + '/commits/' + commitIdentifier;
+    console.log('Full get link is: ' + fullLink);
+    console.log('');
+
+    getCommitInfo();
+});
+
+
+//Get user info on who made the commit, and date&time of commit
+function getCommitInfo() {
+    var options = {
+        url: fullLink,
+        headers: {
+            'User-Agent': 'request'
+        },
+        json: true
+    };
+
+    request.get(options, function(error, response, body){
+        data = body;
+        author = body.commit.author.name;
+        gitUserName = body.author.login;
+        dateTime = body.commit.author.date;
+        var dateTimeS = dateTime.split('T');
+        date = dateTimeS[0];
+        var timeS = dateTimeS[1].split('Z');
+        time = timeS[0];
+
+        console.log('LAST COMMIT INFO:');
+        console.log('Author: ' + author);
+        console.log('Git username: ' + gitUserName);
+        console.log('Date: ' + date + '\nTime: ' + time);
+    });
+}*/

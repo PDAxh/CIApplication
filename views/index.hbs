@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <!-- JS -->
-
+    <script src="../public/javascripts/dataTables.js"></script>
     <script src="../public/javascripts/jobCreator.js"></script>
 
     <title>Continuous integration for GIT repositories</title>
@@ -43,10 +43,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#gitForm">Add Git Repository</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#testReport">View test results</a>
+                    <a class="nav-link" href="http://localhost:3300/results">View test results</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -127,7 +124,7 @@
                             </div>
                             <div id="regretPanel">
                                 <button class="btn btn-outline-danger" id="regret"
-                                        type="submit" value="Back">
+                                        type="submit">
                                     Back
                                 </button>
                             </div>
@@ -138,6 +135,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $(function () {    /* Skapa en ny funktion för varje nytt test med samma struktur!  */
         $("#mavenForm").hide();

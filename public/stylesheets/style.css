@@ -47,6 +47,7 @@ label {
 .Aligner-item {
     flex: 1;
 }
+
 .card {
     background: rgba(0, 0, 0, 0.8) !important;
     border-radius: 25px !important;
@@ -76,18 +77,19 @@ label {
     background: url("../images/skyline.jpg");
     background-size: cover;
 }
-#semiBlackHead{
+
+#semiBlackHead {
     background: rgba(0, 0, 0, 0.7);
     font-family: 'Karla', sans-serif;
     color: #ffffff;
 
 }
-#choiceBtn{
-    margin-bottom:
-            10%;
+
+#choiceBtn {
+    margin-bottom: 10%;
 }
 
-#regret{
+#regret {
     margin-left: 20%;
 }
 
@@ -162,7 +164,7 @@ div.dataTables_wrapper div.dataTables_info {
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 544px) {
     #frontPage {
-        background: url("../images/london.jpg");
+        background: url("../images/london.jpg") 0 no-repeat fixed;;
         /* Free for commercial use: Photo by Lionel Paulus on Unsplash.com*/
         height: 100vh;
 
@@ -177,7 +179,7 @@ div.dataTables_wrapper div.dataTables_info {
     @media (min-width: 1200px) {
 
         #frontPage {
-            background: url("../images/largeScreen.jpg");
+            background: url("../images/largeScreen.jpg") 0 no-repeat fixed;;
 
             /* Free for commercial use: Photo by Lionel Paulus on Unsplash.com
             https://unsplash.com/photos/da70lgFwlro*/
@@ -185,7 +187,6 @@ div.dataTables_wrapper div.dataTables_info {
 
             /* Center and scale the image nicely */
             background-position: center;
-            background-repeat: no-repeat;
             background-size: cover;
             /* Free for commercial use: Photo by Lionel Paulus on Unsplash.com*/
 
@@ -207,6 +208,7 @@ div.dataTables_wrapper div.dataTables_info {
         width: 26%;
         float: left;
     }
+
     @media (min-width: 768px) {
         .col-sm-5ths {
             width: 26%;
@@ -240,6 +242,7 @@ div.dataTables_wrapper div.dataTables_info {
         width: 11%;
         float: left;
     }
+
     @media (min-width: 768px) {
         .col-sm-2ths {
             width: 11%;
