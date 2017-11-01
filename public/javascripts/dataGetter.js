@@ -53,15 +53,14 @@ function getCheckStyle(host, buildNr, jobsList) {
             };
 
             request.get(options, function(error, response, body){
-                // For loop is to deal with data returning in random order because of differend request times
+                // For loop is to deal with data returning in random order because of varying request times
                 for(var j = 0; j < jobsList.length; j++) {
                     if(jobsList[j].name === job.name)
                         jobsList[j].checkstyle = body.numberOfWarnings;
                 }
                 i++;
-                if(i === jobsList.length) {
+                if(i === jobsList.length)
                     getFindbugs(host, 'lastBuild', jobsList) // //Goto step 3, gather findbugs-results
-                }
             });
     });
 }
@@ -88,15 +87,14 @@ function getFindbugs(host, buildNr, jobsList) {
         };
 
         request.get(options, function(error, response, body){
-            // For loop is to deal with data returning in random order because of differend request times
+            // For loop is to deal with data returning in random order because of varying request times
             for(var j = 0; j < jobsList.length; j++) {
                 if(jobsList[j].name === job.name)
                     jobsList[j].findbugs = body.numberOfWarnings;
             }
             i++;
-            if(i === jobsList.length) {
+            if(i === jobsList.length)
                 index.loadJobs(jobsList);   //Send for building table
-            }
         });
     });
 
