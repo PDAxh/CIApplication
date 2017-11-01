@@ -20,7 +20,7 @@
       "scm": [
         {
           "git": {
-            "url": "",
+            "url": "gitter.get",
             "clean": {
               "after": true
             },
@@ -46,7 +46,7 @@
   },
   {
     "job": {
-      "name": "-maven-job",
+      "name": "NewTestVersion3-maven-job",
       "node": "master",
       "builders": [
         {
@@ -67,7 +67,7 @@
       "properties": [
         {
           "github": {
-            "url": ""
+            "url": "gitter.get"
           }
         }
       ],

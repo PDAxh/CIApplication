@@ -31,7 +31,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // When submit button is pushed
 app.post('/', function(req, res, next) {
     console.log('Button clicked!');
-    jobCreator.createJavaMavenJob(req.body.jobname, req.body.gitrep);
+    console.log(req.body.checkStyle);
+    console.log(req.body.findBugs);
+    jobCreator.createJavaMavenJob(req.body.jobname, req.body.gitrep, req.body.checkStyle, req.body.findBugs);
     res.render('index');
 });
 
