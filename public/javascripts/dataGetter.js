@@ -108,7 +108,7 @@ function getCommitInfo(host, buildNr, jobsList) {
     var fullLink; // Link is used to access github api and extract username + date & time of specific commit
 
     jobsList.forEach(function(job) {
-        fullLink = host + '/job/Mavenproject/' + buildNr + '/api/xml';
+        fullLink = host + '/job/Mavenproject/' + buildNr + '/api/json?pretty=true';
         var options = {
             url: fullLink,
             'auth': {
@@ -120,7 +120,8 @@ function getCommitInfo(host, buildNr, jobsList) {
 
         };
         request.get(options, function(error, response, body){
-            console.log(body);
+            var obj = JSON.parse(body);
+            console.log(obj['SHA1']);
             //console.log(x);
             /*console.log(body.actions[3]);
             if (body.actions[3].lastBuiltRevision.SHA1 !== null)
