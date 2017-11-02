@@ -15,7 +15,7 @@ router.get('/results', function(req, res, next) {
 
 router.get('/results', function (req, res, next) {
     //Getting Jenkins jobs
-    dataGetter.getAllJobs('http://10.90.131.114:8080');
+    dataGetter.getAllJobs('http://http://10.2.2.33:8080');
 
     //Builds the table and then renders the results site
     exports.loadJobs = function (jobsList) {
