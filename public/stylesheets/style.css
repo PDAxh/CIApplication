@@ -10,6 +10,10 @@
 
 }
 
+.container-fluid {
+    border-radius: 25px;
+}
+
 .img-responsive {
     display: block;
     max-width: 100%;
@@ -105,7 +109,7 @@ label {
 }
 
 #semiBlackHead {
-
+    background: rgba(0, 0, 0, 0.8) !important;
 }
 
 #bleachedBody {
@@ -117,7 +121,9 @@ label {
 }
 
 #resultsTable {
-    border-radius: 25px;
+    border-radius: 25px !important;
+    border-width: 5px !important;
+    border: rgba(0, 128, 255, 0.9) !important;
     width: 90%;
     padding-top: 1%;
     margin: 0px auto;
