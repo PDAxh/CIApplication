@@ -1,5 +1,3 @@
-
-
 var express = require('express');
 var router = express.Router();
 var dataGetter = require('../public/javascripts/dataGetter');
@@ -33,23 +31,7 @@ router.get('/results', function (req, res, next) {
     };
 
 });
-
-
-/*
-
-function colorElementRed(id) {
-  var el = document.getElementById(id);
-  el.style.color = "red";
-}
-
-$('cProject').css('background-color','rgba(255, 255, 255, 0.9)');
-$('cPush').css('background-color','rgba(255, 255, 255, 0.9)');
-$('cBugs').css('background-color','rgba(255, 255, 255, 0.9)');
-$('cStyle').css('background-color','rgba(255, 255, 255, 0.9)');
-$('cDetails').css('background-color','rgba(255, 255, 255, 0.9)');
-
-
-document.getElementById("cProject").style.backgroundColor = rgba(255, 255, 255, 0.9);
+/*document.getElementById("cProject").style.backgroundColor = rgba(255, 255, 255, 0.9);
 document.getElementById("cPush").style.backgroundColor = rgba(255, 255, 255, 0.9);
 document.getElementById("cBugs").style.backgroundColor = rgba(255, 255, 255, 0.9);
 document.getElementById("cStyle").style.backgroundColor = rgba(255, 255, 255, 0.9);
