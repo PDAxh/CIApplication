@@ -20,7 +20,7 @@
       "scm": [
         {
           "git": {
-            "url": "https://github.com/PDAxh/Jenkins",
+            "url": "test.git",
             "clean": {
               "after": true
             },
@@ -34,7 +34,7 @@
       "notifications": [
         {
           "http": {
-            "url": "http://10.2.2.33:3300/notification",
+            "url": "http://10.90.131.114:3300/notification",
             "format": "json",
             "event": "finalized",
             "timeout": 30000,
@@ -46,7 +46,7 @@
   },
   {
     "job": {
-      "name": "CalculatorProject-maven-job",
+      "name": "asdas-maven-job",
       "node": "master",
       "builders": [
         {
@@ -67,7 +67,7 @@
       "properties": [
         {
           "github": {
-            "url": "https://github.com/PDAxh/Jenkins"
+            "url": "test.git"
           }
         }
       ],
