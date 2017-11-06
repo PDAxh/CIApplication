@@ -1,3 +1,4 @@
+
 var express = require('express');
 var router = express.Router();
 var dataGetter = require('../public/javascripts/dataGetter');
@@ -22,9 +23,9 @@ router.get('/results', function (req, res, next) {
         var table = "";
         for(var i = 0; i < jobsList.length; i++) {
             table += '<tr><td class="col-md-5ths col-xs-6" id="cProject">' + jobsList[i].name + '</b></td>' +
-                '<td class="col-md-5ths col-xs-6"  id="cPush"><b>Date: </b><a href="' + jobsList[i].commitUrl + '">' + jobsList[i].pushDate + '</a><br>' +
-                    '<b>Author: </b>' + jobsList[i].commitAuthor + '<br>' +
-                    '<b>Comment: </b>' + jobsList[i].commitComment + '</td>' +
+                '<td class="col-md-5ths col-xs-6"  id="cPush"><b style="font-weight:700;">Date: </b>' + jobsList[i].lastPushDate + '<br>' +
+                '<b style="font-weight:700;">Author: </b>' + jobsList[i].lastCommitAuthor + '<br>' +
+                '<b style="font-weight:700;">Comment: </b>' + jobsList[i].lastCommitComment + '</td>' +
                 '<td class="col-md-2ths col-xs-6" id="cBugs" >' + jobsList[i].findbugs + '</td>' +
                 '<td class="col-md-2ths col-xs-6" id="cStyle" >' + jobsList[i].checkstyle + '</td>' +
                 '<td class="col-md-5ths col-xs-6" id="cDetails" >' +  'null' + '</td></tr>' ;

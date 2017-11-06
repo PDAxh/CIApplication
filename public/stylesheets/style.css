@@ -148,11 +148,15 @@ label {
     font-weight: 300;
 }
 
-#cProject {
+#cProject{
     font-family: 'Lato', sans-serif;
     font-weight: 700;
     font-size: 18px;
 }
+#change{
+      font-family: 'Lato', sans-serif !important;
+      font-weight: 700 !important;
+  }
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 544px) {
