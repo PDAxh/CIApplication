@@ -117,7 +117,7 @@ function getCommitInfo(host, buildNr, jobsList) {
 
     jobsList.forEach(function(job) {
         console.log(job.name);
-        fullLink = host + '/job/' + job.name + '/' + buildNr + '/api/json?pretty=true';
+        fullLink = host + '/job/' + 'MattiasTest2-maven-job' + '/' + buildNr + '/api/json?pretty=true';
 
         var options = {
             url: fullLink,
