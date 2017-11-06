@@ -29,7 +29,7 @@ router.get('/results', function (req, res, next) {
                 '<td class="col-md-2ths col-xs-6" id="cStyle" >' + jobsList[i].checkstyle + '</td>' +
                 '<td class="col-md-5ths col-xs-6" id="cDetails" >' +  'null' + '</td></tr>' ;
         }
-        res.render('results', {title: 'reportsite', insertRow: table});
+        res.render('results', {title: 'Results', insertRow: table});
     };
 
 });
