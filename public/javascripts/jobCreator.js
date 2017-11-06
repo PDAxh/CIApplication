@@ -8,7 +8,7 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
     //Reading from a blueprint yaml file
     // Select type of job function
     if((checkCheck === 'on') && (checkBugs === 'on')){
-        var data = fs.readFileSync('../../mavenjobs/javamaven.yml', 'utf8');
+        var data = fs.readFileSync('./mavenjobs/javamaven.yml', 'utf8');
         console.log('findbugs and checkstyles')
     }
 

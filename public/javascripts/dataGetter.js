@@ -23,10 +23,11 @@ exports.getAllJobs = function (host) {
                 name: index.name,
                 checkstyle: '',
                 findbugs: '',
-                lastCommitId: '',
-                lastCommitAuthor: '',
-                lastPushDate: '',
-                lastCommitComment: ''
+                commitId: '',
+                commitAuthor: '',
+                pushDate: '',
+                commitComment: '',
+                commitUrl: ''
             });
         });
         getCheckStyle(host, 'lastBuild', jobsList) // Go to next step, fill with checkstyle-results
@@ -146,6 +147,7 @@ function getCommitInfo(host, buildNr, jobsList) {
             var time = c(".commitTime").html();
             var author = c(".author").html();
             var message = c(".message").html();
+            var commitLink = c("a").attr("href");
 
             console.log("------ " + job.name + " -------");
             console.log("Commit: " + lastCommit);
@@ -157,10 +159,11 @@ function getCommitInfo(host, buildNr, jobsList) {
             // For loop is to deal with data returning in random order because of varying request times
             for(var j = 0; j < jobsList.length; j++) {
                 if(jobsList[j].name === job.name) {
-                    jobsList[j].lastCommitId = lastCommit;
-                    jobsList[j].lastCommitAuthor = author;
-                    jobsList[j].lastPushDate = time;
-                    jobsList[j].lastCommitComment = message;
+                    jobsList[j].commitId = lastCommit;
+                    jobsList[j].commitAuthor = author;
+                    jobsList[j].pushDate = time;
+                    jobsList[j].commitComment = message;
+                    jobsList[j].commitUrl = commitLink;
                 }
             }
             i++;
