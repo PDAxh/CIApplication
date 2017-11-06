@@ -22,7 +22,9 @@ router.get('/results', function (req, res, next) {
         var table = "";
         for(var i = 0; i < jobsList.length; i++) {
             table += '<tr><td class="col-md-5ths col-xs-6" id="cProject">' + jobsList[i].name + '</td>' +
-                '<td class="col-md-5ths col-xs-6"  id="cPush"><b>' + 'Date: ' + '</b>' + jobsList[i].lastPushDate + '<br><b>' + 'Comment: ' + '</b>' + jobsList[i].lastCommitComment + '</td>' +
+                '<td class="col-md-5ths col-xs-6"  id="cPush"><b>Date: </b>' + jobsList[i].lastPushDate + '<br>' +
+                    '<b>Author: </b>' + jobsList[i].lastCommitAuthor + '<br>' +
+                    '<b>Comment: </b>' + jobsList[i].lastCommitComment + '</td>' +
                 '<td class="col-md-2ths col-xs-6" id="cBugs" >' + jobsList[i].findbugs + '</td>' +
                 '<td class="col-md-2ths col-xs-6" id="cStyle" >' + jobsList[i].checkstyle + '</td>' +
                 '<td class="col-md-5ths col-xs-6" id="cDetails" >' +  'null' + '</td></tr>' ;
