@@ -16,6 +16,21 @@
     height: auto;
 }
 
+.table thead tr th, .table tbody tr td {
+    text-align: center;
+    border-color: transparent;
+}
+.table{
+
+    border-top:none !important;
+   border-left: none;
+    border-right: none;
+}
+
+.borderless > thead > tr > th {
+    border-top: none;
+}
+
 label {
     font-family: 'Karla', sans-serif;
     font-size: 1.1em;
@@ -79,12 +94,14 @@ label {
 }
 
 #semiBlackHead {
-    background: rgba(0, 0, 0, 0.7);
+    background: transparent;
+    border-radius: 25px;
     font-family: 'Karla', sans-serif;
     color: #ffffff;
     padding: 0px;
 
 }
+
 #choiceBtn {
     margin-bottom: 10%;
 }
@@ -102,10 +119,11 @@ label {
     padding: 2rem;
     box-sizing: border-box;
     box-shadow: 0 .5em 1em rgba(0, 0, 0, 0.5);
+
 }
+
 #bleachedBody {
     background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 25px !important;
     background-size: cover;
     text-align: center;
     background-blend-mode: soft-light;
@@ -115,18 +133,16 @@ label {
 #resultsTable {
 
     border-radius: 25px !important;
+    border-style: ridge;
+    border-width: 5px !important;
     width: 90%;
-background-color: rgba(33, 219, 255, 0.5) !important;
-    padding-top: 1%;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+  padding-bottom: 0.5%;
     margin: 0px auto;
     margin-top: 2%;
     float: none;
 }
-.table-borderless td,
-.table-borderless th {
-    border: 0 !important;
-}
-
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 544px) {
