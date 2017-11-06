@@ -20,10 +20,11 @@
     text-align: center;
     border-color: transparent;
 }
-.table{
 
-    border-top:none !important;
-   border-left: none;
+.table {
+
+    border-top: none !important;
+    border-left: none;
     border-right: none;
 }
 
@@ -119,15 +120,12 @@ label {
     padding: 2rem;
     box-sizing: border-box;
     box-shadow: 0 .5em 1em rgba(0, 0, 0, 0.5);
-
 }
-
 #bleachedBody {
     background-color: rgba(255, 255, 255, 0.9);
     background-size: cover;
     text-align: center;
     background-blend-mode: soft-light;
-
 }
 
 #resultsTable {
@@ -138,10 +136,22 @@ label {
     width: 90%;
     border-color: rgba(0, 0, 0, 0.2) !important;
     background-color: rgba(0, 0, 0, 0.6) !important;
-  padding-bottom: 0.5%;
+    padding-bottom: 0.5%;
     margin: 0px auto;
     margin-top: 2%;
     float: none;
+
+}
+
+#cPush, #cBugs, #cStyle, #cDetails {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
+#cProject {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
 }
 
 /*Small devices (landscape phones, 576px and up)*/

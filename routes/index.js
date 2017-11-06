@@ -21,7 +21,7 @@ router.get('/results', function (req, res, next) {
     exports.loadJobs = function (jobsList) {
         var table = "";
         for(var i = 0; i < jobsList.length; i++) {
-            table += '<tr><td class="col-md-5ths col-xs-6" id="cProject"><b style="font-size:25px">' + jobsList[i].name + '</b></td>' +
+            table += '<tr><td class="col-md-5ths col-xs-6" id="cProject">' + jobsList[i].name + '</b></td>' +
                 '<td class="col-md-5ths col-xs-6"  id="cPush"><b>Date: </b>' + jobsList[i].lastPushDate + '<br>' +
                     '<b>Author: </b>' + jobsList[i].lastCommitAuthor + '<br>' +
                     '<b>Comment: </b>' + jobsList[i].lastCommitComment + '</td>' +
