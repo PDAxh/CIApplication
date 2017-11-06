@@ -8,16 +8,16 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
     //Reading from a blueprint yaml file
     // Select type of job function
     if((checkCheck === 'on') && (checkBugs === 'on')){
-        var data = fs.readFileSync('./mavenjobs/javamaven.yml', 'utf8');
+        var data = fs.readFileSync('../../mavenjobs/javamaven.yml', 'utf8');
         console.log('findbugs and checkstyles')
     }
 
     else if ((checkCheck !== 'on') && (checkBugs === 'on')) {
-        var data = fs.readFileSync('./mavenjobs/javamaven_findbug.yml', 'utf8');
+        var data = fs.readFileSync('../../mavenjobs/javamaven_findbug.yml', 'utf8');
         console.log('findbugs only')
     }
     else if ((checkCheck === 'on') && (checkBugs !== 'on')) {
-        var data = fs.readFileSync('./mavenjobs/javamaven_checkstyles.yml', 'utf8');
+        var data = fs.readFileSync('../../mavenjobs/javamaven_checkstyles.yml', 'utf8');
         console.log('checksings only')
     }
     else if ((checkCheck !== 'on') && (checkBugs !== 'on')) {

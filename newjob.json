@@ -20,7 +20,7 @@
       "scm": [
         {
           "git": {
-            "url": "https://github.com/PDAxh/Jenkins",
+            "url": "test.git",
             "clean": {
               "after": true
             },
@@ -46,7 +46,7 @@
   },
   {
     "job": {
-      "name": "CalculatorProject-maven-job",
+      "name": "asdas-maven-job",
       "node": "master",
       "builders": [
         {
@@ -67,7 +67,7 @@
       "properties": [
         {
           "github": {
-            "url": "https://github.com/PDAxh/Jenkins"
+            "url": "test.git"
           }
         }
       ],
