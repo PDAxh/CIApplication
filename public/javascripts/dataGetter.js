@@ -23,12 +23,10 @@ exports.getAllJobs = function (host) {
                 name: index.name,
                 checkstyle: '',
                 findbugs: '',
-                lastCommitUrl: '',
                 lastCommitId: '',
-                lastPushName: '',
+                lastCommitAuthor: '',
                 lastPushDate: '',
-                lastCommitComment: '',
-                lastPushTime: ''
+                lastCommitComment: ''
             });
         });
         getCheckStyle(host, 'lastBuild', jobsList) // Go to next step, fill with checkstyle-results
@@ -108,6 +106,7 @@ function getFindbugs(host, buildNr, jobsList) {
 
 // 4. Get commidId, commitUrl, lastPushDate, lastCommitComment
 function getCommitInfo(host, buildNr, jobsList) {
+    var cheerio = require("cheerio");
     var i= 0;
     var gitProject; // = gitusername/projectname
     var commitIdentifier;
@@ -116,51 +115,57 @@ function getCommitInfo(host, buildNr, jobsList) {
     var fullLink; // Link is used to access github api and extract username + date & time of specific commit
 
     jobsList.forEach(function(job) {
+        console.log(job.name);
         fullLink = host + '/job/' + job.name + '/' + buildNr + '/api/json?pretty=true';
+
         var options = {
             url: fullLink,
+            headers: {
+                'User-Agent': 'request'
+            },
             'auth': {
                 'user': 'admin1',
                 'pass': 'admin1',
                 'sendImmediately': true
             },
             json: true
-
         };
+
         request.get(options, function(error, response, body){
-            if (!body.actions[2].hasOwnProperty('lastBuiltRevision'))
-                commitIdentifier = null;
-            else
-                commitIdentifier = body.actions[2].lastBuiltRevision.SHA1;
+            var cheerio = require("cheerio");
 
-            var data = String(body.actions[2].remoteUrls);
-            var splitter = data.split('com/');
-            gitProject = splitter[1];
-
-            var nextLink = 'https://api.github.com/repos/' + gitProject + '/commits/' + commitIdentifier;
-
-            if(typeof body.changeSet.items[0] !== 'undefined') {
-                date = body.changeSet.items[0].date;
-                comment = body.changeSet.items[0].msg;
-            } else {
-                date = '';
-                comment = '';
+            for(var o = 0; o < body.actions.length; o++) {
+                if(typeof body.actions[o].text !== 'undefined')
+                    var htmlObj = body.actions[o].text;
             }
+
+            //console.log(htmlObj);
+
+            var c = cheerio.load(htmlObj);
+            var lastCommit = c(".commit").html();
+            var time = c(".commitTime").html();
+            var author = c(".author").html();
+            var message = c(".message").html();
+
+            console.log("------ " + job.name + " -------");
+            console.log("Commit: " + lastCommit);
+            console.log("Author: " + author);
+            console.log("Date & Time: " + time);
+            console.log("Message: " + message);
 
 
             // For loop is to deal with data returning in random order because of varying request times
             for(var j = 0; j < jobsList.length; j++) {
                 if(jobsList[j].name === job.name) {
-                    jobsList[j].lastCommitId = commitIdentifier;
-                    jobsList[j].lastCommitUrl = nextLink;
-                    jobsList[j].lastPushDate = date;
-                    jobsList[j].lastCommitComment = comment;
+                    jobsList[j].lastCommitId = lastCommit;
+                    jobsList[j].lastCommitAuthor = author;
+                    jobsList[j].lastPushDate = time;
+                    jobsList[j].lastCommitComment = message;
                 }
             }
             i++;
             if(i === jobsList.length)
                 index.loadJobs(jobsList);   //Send for building table
-            //getCommitInfo2(jobsList);
         });
     });
 

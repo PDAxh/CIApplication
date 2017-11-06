@@ -16,6 +16,22 @@
     height: auto;
 }
 
+.table thead tr th, .table tbody tr td {
+    text-align: center;
+    border-color: transparent;
+}
+
+.table {
+
+    border-top: none !important;
+    border-left: none;
+    border-right: none;
+}
+
+.borderless > thead > tr > th {
+    border-top: none;
+}
+
 label {
     font-family: 'Karla', sans-serif;
     font-size: 1.1em;
@@ -79,12 +95,11 @@ label {
 }
 
 #semiBlackHead {
-    background: rgba(0, 0, 0, 0.7);
+    background: transparent;
+    border-radius: 25px;
     font-family: 'Karla', sans-serif;
     color: #ffffff;
     padding: 0px;
-
-
 
 }
 
@@ -106,67 +121,37 @@ label {
     box-sizing: border-box;
     box-shadow: 0 .5em 1em rgba(0, 0, 0, 0.5);
 }
-
-
 #bleachedBody {
     background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 25px !important;
     background-size: cover;
     text-align: center;
     background-blend-mode: soft-light;
-
 }
 
 #resultsTable {
 
     border-radius: 25px !important;
+    border-style: ridge;
+    border-width: 5px !important;
     width: 90%;
-background-color: rgba(33, 219, 255, 0.5) !important;
-    padding-top: 1%;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    padding-bottom: 0.5%;
     margin: 0px auto;
     margin-top: 2%;
     float: none;
-}
-.table-borderless td,
-.table-borderless th {
-    border: 0;
+
 }
 
-table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after {
-    padding: 5px;
+#cPush, #cBugs, #cStyle, #cDetails {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
 }
 
-.dataTables_wrapper .mdb-select {
-    border: none;
-}
-
-.dataTables_wrapper .mdb-select.form-control {
-    padding-top: 0;
-    margin-top: -1rem;
-    margin-left: 0.7rem;
-    margin-right: 0.7rem;
-}
-
-.dataTables_length label {
-    display: flex;
-    justify-content: left;
-}
-
-.dataTables_filter label {
-    margin-bottom: 0;
-}
-
-.dataTables_filter label input.form-control {
-    margin-top: -0.6rem;
-    padding-bottom: 5px;
-}
-
-table.dataTable {
-    margin-bottom: 3rem !important;
-}
-
-div.dataTables_wrapper div.dataTables_info {
-    padding-top: 5px;
+#cProject {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
 }
 
 /*Small devices (landscape phones, 576px and up)*/
