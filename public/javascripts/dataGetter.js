@@ -30,7 +30,7 @@ exports.getAllJobs = function (host) {
                 gitUser: '',
                 pushDate: '',
                 commitComment: '',
-                commitUrl: ''
+                commitUrl: '',
             });
         });
         getCheckStyle(host, 'lastBuild', jobsList) // Go to next step, fill with checkstyle-results
