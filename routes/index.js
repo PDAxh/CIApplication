@@ -23,12 +23,12 @@ router.get('/results', function (req, res, next) {
         var table = "";
         for(var i = 0; i < jobsList.length; i++) {
             table += '<tr><td class="col-md-5ths col-xs-6" id="cProject">' + jobsList[i].name + '</b></td>' +
-                '<td class="col-md-5ths col-xs-6"  id="cPush"><b style="font-weight:700;">Date: </b><a href="' + jobsList[i].commitUrl + '">' + jobsList[i].pushDate + '</a><br>' +
-                '<b style="font-weight:700;">Author: </b>' + jobsList[i].commitAuthor + '<br>' +
-                '<b style="font-weight:700;">Comment: </b>' + jobsList[i].commitComment + '</td>' +
+                '<td class="col-md-5ths col-xs-6"  id="cPush"><b style="font-weight:700;"><a href="' + jobsList[i].commitUrl + '">' + jobsList[i].pushDate + '</a></b><br>' +
+                '<b style="font-weight:700;">Comment: </b>' + jobsList[i].commitComment + '<br>' +
+                '<b style="font-weight:700;">Author: </b>' + jobsList[i].commitAuthor + '</td>' +
                 '<td class="col-md-2ths col-xs-6" id="cBugs" >' + jobsList[i].findbugs + '</td>' +
                 '<td class="col-md-2ths col-xs-6" id="cStyle" >' + jobsList[i].checkstyle + '</td>' +
-                '<td class="col-md-5ths col-xs-6" id="cDetails" >' +  'null' + '</td></tr>' ;
+                '<td class="col-md-5ths col-xs-6" id="cDetails" >' +  'null' + '</td></tr>';
         }
         res.render('results', {title: 'Results', insertRow: table});
     };
