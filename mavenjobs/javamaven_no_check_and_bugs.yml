@@ -14,13 +14,49 @@
     scm:
         - git:
             url: 'git-repo'
+            credentials-id: username
+            add:
+              domain: Global credentials (unrestricted)
+              kind: 'ssh username with privatekey'
+              scope: global
+              username: username-inserts-here
+              private key:
+              enter directly: true
+              key: -----BEGIN RSA PRIVATE KEY-----
+                 MIIEpQIBAAKCAQEA0caO26KhMdbcQvK/lLHeTQn4yr9pM9477fCe/poEStE6/nEz
+                 ZgKbyp3G0MkJwj45HUSZgP+wez53mWOY47CQaPbtwJ60fIFFeEG1Hby5IDBBSNK0
+                 k+qBPWYijUI7nou356meax6Wv6X5HSG0VfxLVcUFnYusDoZoV7EIq6nzrrVuX6lQ
+                 YPs0dgMiDShfyoZ1jAzjhCc1fPPcVfCL7SSebDocwBjD62e5c/ySzPUuOYLXEvn8
+                 n9eiaaADiQt1fe4gK05S5/Nyb59gbzhTXISXNzaP+rzsjzzpfPimUWkc3ZSTBteu
+                 wLfu7GB28bNEOvH2iSgJLl2HTLCHF76H4zYfVwIDAQABAoIBAG488gXpyNvwFX/5
+                 IUR61F+Xxe6F+DsRply7/lG9jlPi8CWWR3RsGoK3tysw+rfhCxKeYiywMYYSpbct
+                 58J/nuQKH5cBz8c+B8vSe+NMsdyAf05NrCevLIufiLjC/aGrutE7Cc0xHfdIuUjd
+                 1W76TnycNP89zwUzDNJIbk4H2c8NBYs08WwP78dYqWSryleR4cIb0+HH3dIUvMzz
+                 JwfV2kpUxTr7QTcK61ugvAF9VkiKW9v/B41OkQD0s0RDeEIt+J50kx7Q4FG3YevG
+                 Wsc24eVFupNnnxPYNpNj08K4dVX8Gz3tx4yrKlsk6c/yFkLs6xcooij7IyMMZV93
+                 Sgo79IECgYEA6JyYgt9gIWCACZsQ77yE+Rk5kglpbUEyOSRMtFmaJo6dH4+DsVq6
+                 GA1OpJWv1tm2/ICg1gBVKNgeRVBYc3xGq9L/NfuMgM9q4GbGfiSbbeukRqIo359C
+                 HgCnk2nk9gT8ZqYN5KYSoyp2BqH8VwIgie0Ieqd/7qJNBJN1Zj3pOc8CgYEA5t4p
+                 3OaCTulx2E1NnktImOcojDCegZLazL93VQbePVmbNVPITQC9jKiJexLeK4EXo9Di
+                 fYeeUUERFWQeXo14olaqM+lW9DkX/S9VTNJzLEwMyXx6sx5PCjH3dx1rl4uTWPZW
+                 RCtGoju1AGuTM3ki6DV1LXd77EmzbbwHpgFPC/kCgYEAwLIxOYF4rk214788yY0f
+                 jwfRhGQdnS98PpAOpvzvUW+lRCbsjri9Hv2vH3MNRuv2xbh9BKsj4QEgGoWTsJ/M
+                 H71cREkNvQuW2yzo1EjZJbcm0Ii3WYEiEZ6zM9Bup0u8GAEJ01esatTbD2WTmDSf
+                 5gKhmpI1zedP7DGH+Nni4ksCgYEAuxHp+gUOMcMXbJ229z0pZjxorq/2wCevA5lh
+                 qJQYIL4q9dsdwseG0CMAw6lWPQotjaAE5pKtxkli/mJR+WvJBEIVSFsbCmn49j8U
+                 b1tX190Hv3wOMHWutiQm0W4VcIa4rq1s2W/3nB2lXOHONTdDAcXPXTgkQiK2MYTa
+                 7bjBxIECgYEApF5nVaNBB9MfFFxFkwQG2gcPmalyRs9dA6zlMaloukQBaTmHcDjc
+                 E2lfp3vylT966PBRqoKGpNpE6UWbcTPWj+iEy2QSDPliPLoGOGKLC8MXxz+0jYqd
+                 ECvReGLbGg1V4YJmW2pXbTQmN2sjjYQHdLJ/kGgyrrbHEbEBm0PgfiI=
+                 -----END RSA PRIVATE KEY-----
+              id: username
             clean:
                 after: true
             repo-depth: "infinity"
             wipe-workspace: true
             git-config-name: 'git-conf-name'
             git-config-email: 'git-config-email'
-            #credentials-id: e8ed41e6-ec37-11e5-b5a0-43b698df0c45
+
     notifications:
       - http:
           url: http://10.2.2.33:3300/notification
