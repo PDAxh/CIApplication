@@ -15,6 +15,11 @@
     background-color: transparent;
     border-color:  lime !important;
 }
+.btn-outline-primary:hover {
+    color: black !important;
+    background-color: lime !important;
+    border-color: black !important;
+}
 
 .img-responsive {
     display: block;
