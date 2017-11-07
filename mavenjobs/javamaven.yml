@@ -20,7 +20,7 @@
             wipe-workspace: true
             git-config-name: 'git-conf-name'
             git-config-email: 'git-config-email'
-            #credentials-id: e8ed41e6-ec37-11e5-b5a0-43b698df0c45
+            credentials-id: bac64601-59ef-4452-a816-2b927746320b
     notifications:
       - http:
           url: http://http://10.2.2.33:3300/notification

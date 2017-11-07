@@ -1,6 +1,6 @@
-$('#resultsTable').DataTable( {
+/*$('#resultsTable').DataTable( {
     responsive: true
-} );
+} );*/
 
 //Creates a new Jenkins job for a Java Maven project
 exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, checkBugs) {
