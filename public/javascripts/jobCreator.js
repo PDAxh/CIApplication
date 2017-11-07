@@ -1,5 +1,5 @@
 //Creates a new Jenkins job for a Java Maven project
-exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, checkBugs, sshKey) {
+exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, checkBugs, sshKey, username) {
     console.log('Function createJavaMavenJob initialized');
     var yaml = require('js-yaml');
     var fs = require('fs');
@@ -38,6 +38,7 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
     file[0].defaults.scm[0].git['git-config-name'] = newGitConfigName;
     file[0].defaults.scm[0].git['git-config-email'] = newGitConfigEmail;
     file[0].defaults.scm[0].git.add.key = sshKey;
+    file[0].defaults.scm[0].git.add.user = username;
     file[1].job.name = newJobName + "-maven-job";
     file[1].job.properties[0].github.url = newGitRepo;
 

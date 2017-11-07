@@ -29,7 +29,7 @@ app.post('/', function(req, res, next) {
     console.log('Button clicked!');
     console.log(req.body.checkStyle);
     console.log(req.body.findBugs);
-    jobCreator.createJavaMavenJob(req.body.jobname, req.body.gitrep, req.body.checkStyle, req.body.findBugs);
+    jobCreator.createJavaMavenJob(req.body.jobname, req.body.gitrep, req.body.checkStyle, req.body.findBugs, req.body.sshkey, req.body.username);
     res.render('index');
 });
 

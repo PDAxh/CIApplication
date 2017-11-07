@@ -20,7 +20,7 @@
       "scm": [
         {
           "git": {
-            "url": "asdfsdfsdf.giot",
+            "url": "ssh://git@github.com/PDAxh/CI-CucumberTesting",
             "credentials-id": "username",
             "add": {
               "domain": "Global credentials (unrestricted)",
@@ -29,7 +29,9 @@
               "username": "username-inserts-here",
               "private key": null,
               "enter directly": true,
-              "id": "username"
+              "key": "-----BEGIN RSA PRIVATE KEY-----\r\n                 MIIEpQIBAAKCAQEA0caO26KhMdbcQvK/lLHeTQn4yr9pM9477fCe/poEStE6/nEz\r\n                 ZgKbyp3G0MkJwj45HUSZgP+wez53mWOY47CQaPbtwJ60fIFFeEG1Hby5IDBBSNK0\r\n                 k+qBPWYijUI7nou356meax6Wv6X5HSG0VfxLVcUFnYusDoZoV7EIq6nzrrVuX6lQ\r\n                 YPs0dgMiDShfyoZ1jAzjhCc1fPPcVfCL7SSebDocwBjD62e5c/ySzPUuOYLXEvn8\r\n                 n9eiaaADiQt1fe4gK05S5/Nyb59gbzhTXISXNzaP+rzsjzzpfPimUWkc3ZSTBteu\r\n                 wLfu7GB28bNEOvH2iSgJLl2HTLCHF76H4zYfVwIDAQABAoIBAG488gXpyNvwFX/5\r\n                 IUR61F+Xxe6F+DsRply7/lG9jlPi8CWWR3RsGoK3tysw+rfhCxKeYiywMYYSpbct\r\n                 58J/nuQKH5cBz8c+B8vSe+NMsdyAf05NrCevLIufiLjC/aGrutE7Cc0xHfdIuUjd\r\n                 1W76TnycNP89zwUzDNJIbk4H2c8NBYs08WwP78dYqWSryleR4cIb0+HH3dIUvMzz\r\n                 JwfV2kpUxTr7QTcK61ugvAF9VkiKW9v/B41OkQD0s0RDeEIt+J50kx7Q4FG3YevG\r\n                 Wsc24eVFupNnnxPYNpNj08K4dVX8Gz3tx4yrKlsk6c/yFkLs6xcooij7IyMMZV93\r\n                 Sgo79IECgYEA6JyYgt9gIWCACZsQ77yE+Rk5kglpbUEyOSRMtFmaJo6dH4+DsVq6\r\n                 GA1OpJWv1tm2/ICg1gBVKNgeRVBYc3xGq9L/NfuMgM9q4GbGfiSbbeukRqIo359C\r\n                 HgCnk2nk9gT8ZqYN5KYSoyp2BqH8VwIgie0Ieqd/7qJNBJN1Zj3pOc8CgYEA5t4p\r\n                 3OaCTulx2E1NnktImOcojDCegZLazL93VQbePVmbNVPITQC9jKiJexLeK4EXo9Di\r\n                 fYeeUUERFWQeXo14olaqM+lW9DkX/S9VTNJzLEwMyXx6sx5PCjH3dx1rl4uTWPZW\r\n                 RCtGoju1AGuTM3ki6DV1LXd77EmzbbwHpgFPC/kCgYEAwLIxOYF4rk214788yY0f\r\n                 jwfRhGQdnS98PpAOpvzvUW+lRCbsjri9Hv2vH3MNRuv2xbh9BKsj4QEgGoWTsJ/M\r\n                 H71cREkNvQuW2yzo1EjZJbcm0Ii3WYEiEZ6zM9Bup0u8GAEJ01esatTbD2WTmDSf\r\n                 5gKhmpI1zedP7DGH+Nni4ksCgYEAuxHp+gUOMcMXbJ229z0pZjxorq/2wCevA5lh\r\n                 qJQYIL4q9dsdwseG0CMAw6lWPQotjaAE5pKtxkli/mJR+WvJBEIVSFsbCmn49j8U\r\n                 b1tX190Hv3wOMHWutiQm0W4VcIa4rq1s2W/3nB2lXOHONTdDAcXPXTgkQiK2MYTa\r\n                 7bjBxIECgYEApF5nVaNBB9MfFFxFkwQG2gcPmalyRs9dA6zlMaloukQBaTmHcDjc\r\n                 E2lfp3vylT966PBRqoKGpNpE6UWbcTPWj+iEy2QSDPliPLoGOGKLC8MXxz+0jYqd\r\n                 ECvReGLbGg1V4YJmW2pXbTQmN2sjjYQHdLJ/kGgyrrbHEbEBm0PgfiI=\r\n                 -----END RSA PRIVATE KEY-----",
+              "id": "username",
+              "user": "Daniels"
             },
             "clean": {
               "after": true
@@ -56,7 +58,7 @@
   },
   {
     "job": {
-      "name": "asdtester 3999-maven-job",
+      "name": "Danieltest1-maven-job",
       "node": "master",
       "builders": [
         {
@@ -77,7 +79,7 @@
       "properties": [
         {
           "github": {
-            "url": "asdfsdfsdf.giot"
+            "url": "ssh://git@github.com/PDAxh/CI-CucumberTesting"
           }
         }
       ],
