@@ -43,6 +43,7 @@ $(document).ready(function () {
             }
         }
     });
+});
 
     var express = require('express');
     var router = express.Router();
@@ -63,20 +64,25 @@ $(document).ready(function () {
         //Getting Jenkins jobs
         dataGetter.getAllJobs('http://10.2.2.33:8080');
 
-        //Builds the table and then renders the results site
-        exports.loadJobs = function (jobsList) {
-            var table = "";
-            for (var i = 0; i < jobsList.length; i++) {
-                table += '<tr><td class="col-md-5ths col-xs-6" id="cProject">' + jobsList[i].name + '</b></td>' +
-                    '<td class="col-md-5ths col-xs-6"  id="cPush"><b style="font-weight:700;"><a href="' + jobsList[i].commitUrl + '">' + jobsList[i].pushDate + '</a></b><br>' +
-                    '<b style="font-weight:700;">Comment: </b>' + jobsList[i].commitComment + '<br>' +
-                    '<b style="font-weight:700;">Author: </b>' + jobsList[i].commitAuthor + '</td>' +
-                    '<td class="col-md-2ths col-xs-6" id="cBugs" >' + jobsList[i].findbugs + '</td>' +
-                    '<td class="col-md-2ths col-xs-6" id="cStyle" >' + jobsList[i].checkstyle + '</td>' +
-                    '<td class="col-md-5ths col-xs-6" id="cDetails" >' + 'null' + '</td></tr>';
-            }
+        //Sort jobs by date
+        jobsList.sort(function compare(a, b) {
+            var dateA = new Date(a.pushDate);
+            var dateB = new Date(b.pushDate);
+            return dateB - dateA;
+        });
+
+        var table = "";
+        for(var i = 0; i < jobsList.length; i++) {
+            table += '<tr><td class="col-md-5ths col-xs-6" id="cProject">' + jobsList[i].name + '</b></td>' +
+                '<td class="col-md-5ths col-xs-6"  id="cPush"><b style="font-weight:700;"><a href="' + jobsList[i].commitUrl + '">' + jobsList[i].pushDate + '</a></b><br>' +
+                '<b style="font-weight:700;">Comment: </b>' + jobsList[i].commitComment + '<br>' +
+                '<b style="font-weight:700;">Author: </b>' + jobsList[i].author + '</td>' +
+                '<td class="col-md-2ths col-xs-6">Total: <div id="cBugs">' + jobsList[i].findbugs + '</div><br>New: ' + jobsList[i].findbugsNew + '</td>' +
+                '<td class="col-md-2ths col-xs-6">Total: <div id="cStyle">' + jobsList[i].checkstyle + '</div><br>New: ' + jobsList[i].checkstyleNew + '</td>' +
+                '<td class="col-md-5ths col-xs-6" id="cDetails" >' +  'null' + '</td></tr>';
+        }
             res.render('results', {title: 'Results', insertRow: table});
-        };
+
 
     });
     /*document.getElementById("cProject").style.backgroundColor = rgba(255, 255, 255, 0.9);
