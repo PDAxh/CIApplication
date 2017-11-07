@@ -82,6 +82,9 @@ label {
     line-height: 2;
 
 }
+.nav-link{
+    color: rgb(103,184,87) !important;
+}
 
 /* When I remove background the icon goes back to that default size */
 .custom-control-input:checked ~ .custom-control-indicator {
