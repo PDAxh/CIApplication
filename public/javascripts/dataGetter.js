@@ -22,7 +22,9 @@ exports.getAllJobs = function (host) {
             jobsList.push({
                 name: index.name,
                 checkstyle: '',
+                checkstyleNew: '',
                 findbugs: '',
+                findbugsNew: '',
                 commitId: '',
                 author: '',
                 gitUser: '',
@@ -60,7 +62,7 @@ function getCheckStyle(host, buildNr, jobsList) {
         request.get(options, function(error, response, body){
             // For loop is to deal with data returning in random order because of varying request times
             for(var j = 0; j < jobsList.length; j++) {
-                if(jobsList[j].name === job.name) {
+                if(jobsList[j].name === job.name && typeof body.numberOfWarnings !== 'undefined') {
                     jobsList[j].checkstyle = body.numberOfWarnings;
                     jobsList[j].checkstyleNew = body.numberOfNewWarnings;
                 }
@@ -95,7 +97,7 @@ function getFindbugs(host, buildNr, jobsList) {
         request.get(options, function(error, response, body){
             // For loop is to deal with data returning in random order because of varying request times
             for(var j = 0; j < jobsList.length; j++) {
-                if(jobsList[j].name === job.name) {
+                if(jobsList[j].name === job.name && typeof body.numberOfWarnings !== 'undefined') {
                     jobsList[j].findbugs = body.numberOfWarnings;
                     jobsList[j].findbugsNew = body.numberOfNewWarnings;
                 }
