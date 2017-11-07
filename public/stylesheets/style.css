@@ -9,6 +9,12 @@
     font-size: 20px;
 
 }
+.btn-outline-primary {
+    color: lime !important;
+    background-image: none;
+    background-color: transparent;
+    border-color:  lime !important;
+}
 
 .img-responsive {
     display: block;
@@ -83,7 +89,7 @@ label {
 
 }
 .nav-link{
-    color: rgb(103,184,87) !important;
+    color: lime !important;
 }
 
 /* When I remove background the icon goes back to that default size */
