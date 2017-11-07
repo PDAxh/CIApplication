@@ -24,7 +24,8 @@ exports.getAllJobs = function (host) {
                 checkstyle: '',
                 findbugs: '',
                 commitId: '',
-                commitAuthor: '',
+                author: '',
+                gitUser: '',
                 pushDate: '',
                 commitComment: '',
                 commitUrl: '',
@@ -41,7 +42,6 @@ function getCheckStyle(host, buildNr, jobsList) {
     // Looping through jobslist, attaching checkstyle-results to each job object
     jobsList.forEach(function(job) {
 
-        //console.log("getCheckstyle namn " + i + ": " + job.name);
         var reportLink = host + '/job/' + job.name + '/' + buildNr + '/checkstyleResult/api/json';
 
         var options = {
@@ -60,8 +60,10 @@ function getCheckStyle(host, buildNr, jobsList) {
         request.get(options, function(error, response, body){
             // For loop is to deal with data returning in random order because of varying request times
             for(var j = 0; j < jobsList.length; j++) {
-                if(jobsList[j].name === job.name)
+                if(jobsList[j].name === job.name) {
                     jobsList[j].checkstyle = body.numberOfWarnings;
+                    jobsList[j].checkstyleNew = body.numberOfNewWarnings;
+                }
             }
             i++;
             if(i === jobsList.length)
@@ -72,7 +74,6 @@ function getCheckStyle(host, buildNr, jobsList) {
 
 // 3. Gathers findbugs-results
 function getFindbugs(host, buildNr, jobsList) {
-    console.log('Mattias maven job har ' + jobsList[1].checkstyle + ' checkstylevarningar');
     var i = 0;
 
     jobsList.forEach(function(job) {
@@ -94,12 +95,14 @@ function getFindbugs(host, buildNr, jobsList) {
         request.get(options, function(error, response, body){
             // For loop is to deal with data returning in random order because of varying request times
             for(var j = 0; j < jobsList.length; j++) {
-                if(jobsList[j].name === job.name)
+                if(jobsList[j].name === job.name) {
                     jobsList[j].findbugs = body.numberOfWarnings;
+                    jobsList[j].findbugsNew = body.numberOfNewWarnings;
+                }
             }
             i++;
             if(i === jobsList.length)
-                getCommitInfo(host, buildNr, jobsList);
+                getCommitInfo2(host, buildNr, jobsList);
                 //index.loadJobs(jobsList);   //Send for building table
         });
     });
@@ -174,56 +177,76 @@ function getCommitInfo(host, buildNr, jobsList) {
 
 }
 
-//5. Get user info on who made the commit, and date&time of commit
-function getCommitInfo2(jobsList) {
-    var i = 0;
-    var author;
-    var gitUserName;
-    var dateTime;
-    var date;
-    var time;
+// 4 alternative. Get commidId, commitUrl, lastPushDate, lastCommitComment
+function getCommitInfo2(host, buildNr, jobsList) {
+    var i= 0;
+    var gitProject; // = gitusername/projectname
+    var commitIdentifier;
+    var date = '';
+    var comment = '';
+    var fullLink; // Link is used to access github api and extract username + date & time of specific commit
 
     jobsList.forEach(function(job) {
-        if(job.lastCommitId !== null) {
-            var options = {
-                url: job.lastCommitUrl,
-                headers: {
-                    'User-Agent': 'request'
-                },
-                json: true
-            };
+        fullLink = host + '/job/' + job.name + '/' + buildNr + '/api/json?pretty=true';
 
-            request.get(options, function (error, response, body) {
-                console.log(job.name);
-                console.log('url: ' + job.lastCommitUrl);
-                console.log('author: ' + body.commit.author.name);
-                author = body.commit.author.name;
-                gitUserName = body.author.login;
-                dateTime = body.commit.author.date;
-                var dateTimeS = dateTime.split('T');
-                date = dateTimeS[0];
-                var timeS = dateTimeS[1].split('Z');
-                time = timeS[0];
+        var options = {
+            url: fullLink,
+            headers: {
+                'User-Agent': 'request'
+            },
+            'auth': {
+                'user': 'admin1',
+                'pass': 'admin1',
+                'sendImmediately': true
+            },
+            json: true
+        };
 
-                console.log('LAST COMMIT INFO:');
-                console.log('Author: ' + author);
-                console.log('Git username: ' + gitUserName);
-                console.log('Date: ' + date + '\nTime: ' + time);
+        request.get(options, function(error, response, body){
+            var gitUser = '-';
+            var author = '-';
+            var gitUrl = '-';
 
-                for(var j = 0; j < jobsList.length; j++) {
-                    if(jobsList[j].name === job.name) {
-                        jobsList[j].lastPushName = gitUserName;
-                        jobsList[j].lastPushDate = date;
-                        jobsList[j].lastPushTime = time;
-                    }
+            if(typeof body.changeSet.items[0] !== 'undefined') {
+                for(var n = 0; n < body.changeSet.items.length; n++) {
+                    var date = body.changeSet.items[n].date;
+                    var comment = body.changeSet.items[n].comment;
+                    var commitId = body.changeSet.items[n].commitId;
+                    var author = body.changeSet.items[n].author.fullName;
                 }
 
-            });
-        }
-        i++;
-        if(i === jobsList.length)
-            index.loadJobs(jobsList);   //Send for building table
+                for(var o = 0; o < body.actions.length; o++) {
+                    if(typeof body.actions[o].remoteUrls !== 'undefined') {
+                        var gitUrl = body.actions[3].remoteUrls[0] + '/commit/' + commitId;
+                        var gitUrlSplit = gitUrl.split('.com/');
+                        var gitUrlSplit2 = gitUrlSplit[1].split('/');
+                        gitUser = gitUrlSplit2[0];
+                        console.log(gitUrl);
+                    }
+                }
+            } else {
+                var date = "1900-01-01 00:00:00 +0100";
+                var comment = "-";
+                var commitId = "-";
+            }
+
+            // For loop is to deal with data returning in random order because of varying request times
+            for(var j = 0; j < jobsList.length; j++) {
+                if(jobsList[j].name === job.name) {
+                    jobsList[j].commitId = commitId;
+                    jobsList[j].gitUser = gitUser;
+                    jobsList[j].author = author;
+                    jobsList[j].pushDate = date;
+                    jobsList[j].commitComment = comment;
+                    jobsList[j].commitUrl = gitUrl;
+                }
+            }
+            i++;
+            if(i === jobsList.length)
+                index.loadJobs(jobsList);   //Send for building table
+        });
     });
+
 }
 
 // Get a list of all job names on Jenkins server
