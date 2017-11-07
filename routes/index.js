@@ -1,20 +1,20 @@
-$('#resultsTable').DataTable( {
-    responsive: true
-} );
+// $('#resultsTable').DataTable( {
+//     responsive: true
+// } );
+//
+// $(document).ready( function () {
+//     $('#resultsTable').DataTable({
+//         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+//             if (aData[3] == "5") {
+//                 $('td', nRow).css('background-color', 'Red');
+//             }
+//             else if (aData[3] == "4") {
+//                 $('td', nRow).css('background-color', 'Orange');
+//             }
+//         }
+//     });
+// });
 
-$(document).ready( function () {
-    $('#resultsTable').DataTable({
-        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-            if ( aData[3] == "5" )
-            {
-                $('td', nRow).css('background-color', 'Red');
-            }
-            else if ( aData[3] == "4" )
-            {
-                $('td', nRow).css('background-color', 'Orange');
-            }
-        }
-    });
 
 var express = require('express');
 var router = express.Router();
