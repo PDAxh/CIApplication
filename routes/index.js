@@ -18,9 +18,7 @@
         dataGetter.getAllJobs('http://10.2.2.33:8080');
 
         //Builds the table and then renders the results site
-        exports.loadJobs = function (jobsList) {
-
-
+        exports.loadJobs = function (jobsList) {
             //Sort jobs by date
             jobsList.sort(function compare(a, b) {
                 var dateA = new Date(a.pushDate);
@@ -39,7 +37,6 @@
                     '<td class="col-md-5ths col-xs-6" id="cDetails" >' + 'null' + '</td></tr>';
             }
             res.render('results', {title: 'Results', insertRow: table});
-
         }
     });
     /*document.getElementById("cProject").style.backgroundColor = rgba(255, 255, 255, 0.9);

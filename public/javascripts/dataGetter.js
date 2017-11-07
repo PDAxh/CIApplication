@@ -205,6 +205,7 @@ function getCommitInfo2(host, buildNr, jobsList) {
         request.get(options, function(error, response, body){
             var gitUser = '-';
             var author = '-';
+            var gitUrl = '-';
 
             if(typeof body.changeSet.items[0] !== 'undefined') {
                 for(var n = 0; n < body.changeSet.items.length; n++) {
@@ -216,14 +217,11 @@ function getCommitInfo2(host, buildNr, jobsList) {
 
                 for(var o = 0; o < body.actions.length; o++) {
                     if(typeof body.actions[o].remoteUrls !== 'undefined') {
-                        var gitUrl = body.actions[3].remoteUrls[0] + commitId;
+                        var gitUrl = body.actions[3].remoteUrls[0] + '/commit/' + commitId;
                         var gitUrlSplit = gitUrl.split('.com/');
                         var gitUrlSplit2 = gitUrlSplit[1].split('/');
                         gitUser = gitUrlSplit2[0];
-
-                        console.log(job.name + ' has name ' + gitUser);
-                    } else {
-                        console.log(job.name + ' has name ' + gitUser);
+                        console.log(gitUrl);
                     }
                 }
             } else {
@@ -240,7 +238,7 @@ function getCommitInfo2(host, buildNr, jobsList) {
                     jobsList[j].author = author;
                     jobsList[j].pushDate = date;
                     jobsList[j].commitComment = comment;
-                    jobsList[j].commitUrl = '';
+                    jobsList[j].commitUrl = gitUrl;
                 }
             }
             i++;
