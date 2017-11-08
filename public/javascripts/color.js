@@ -1,5 +1,13 @@
 /*$(document).ready(function () {
     $('#resultsTable').DataTable({*/
+
+/**
+ *
+ *
+ * @type {jQuery}
+ */
+
+
 var oTable = $('#countryTable').DataTable({
     'rowCallback': function (row, data, index) {
         if (data[3] || data[4] == 0) {

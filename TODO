@@ -1,0 +1,19 @@
+TODO list for Front/Backend
+- fix html detailed report from jenkins to display on monitor
+- Resultdisplay
+- Create CucumberDemo
+- color the rows of bugs and checkstyle, green = zero bugs, red = bugs etc
+- Autorefresh of result screen
+- SSH connection
+- Info button on loginscreen
+- add selection for more
+- Remake the mavenjob bluprints, to fit with new functions with ssh
+- Connect to sundsvall IZ
+
+----- CI : Jenkins TODO -------
+- Jenkins configuration python cucumbertest
+- bitbucket plugin
+- make jenkins aviable for gitbash/ stash etc
+- Get a better place for server
+- add support for more syntax such as c#, JS, Python and more (plugins)
+- DocLinks, Support fpr JUnit-test (plugins)
