@@ -7,7 +7,7 @@ exports.getAllJobs = function (host) {
     var link = host + '/api/json?pretty=true';
     var options = {
         url: link,
-        'auth': {
+        auth: {
             'user': 'admin1',
             'pass': 'admin1',
             'sendImmediately': true
@@ -30,7 +30,7 @@ exports.getAllJobs = function (host) {
                 gitUser: '',
                 pushDate: '',
                 commitComment: '',
-                commitUrl: '',
+                commitUrl: ''
             });
         });
         getCheckStyle(host, 'lastBuild', jobsList) // Go to next step, fill with checkstyle-results
@@ -48,7 +48,7 @@ function getCheckStyle(host, buildNr, jobsList) {
 
         var options = {
             url: reportLink,
-            'auth': {
+            auth: {
                 'user': 'admin1',
                 'pass': 'admin1',
                 'sendImmediately': true
@@ -83,7 +83,7 @@ function getFindbugs(host, buildNr, jobsList) {
 
         var options = {
             url: reportLink,
-            'auth': {
+            auth: {
                 'user': 'admin1',
                 'pass': 'admin1',
                 'sendImmediately': true
