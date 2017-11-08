@@ -22,121 +22,123 @@
 </header>
 
 <div id="frontPage">
-<!-- This is the div that I want to center verically between the navigation bar and the div bellow-->
-<div id="flexh">
-    <!-- <div class="col-6 .col-md-6">-->
-    <h1 id="headLine">Test your Git repository!</h1>
-</div>
+    <!-- This is the div that I want to center verically between the navigation bar and the div bellow-->
+    <div id="flexh">
+        <!-- <div class="col-6 .col-md-6">-->
+        <h1 id="headLine">Test your Git repository!</h1>
+    </div>
 
-<div id="gitForm">
-    <div class="Aligner">
-        <div class="container h-100 d-flex justify-content-center">
-            <div class="col-md-6">
-                <div class=card>
-                    <div class="card-block">
-                        <form class="form-create" action="/" method="post">
-                            <div class="form-group">
-                                <label id="nameLabel" for="projectNameInput">Name your
-                                    project</label>
-                                <input type="text" class="form-control" name="jobname" id="projectNameInput"
-                                       placeholder="Enter project name">
-                            </div>
-                            <div class="form-group">
-                                <label id="gitLabel" for="repoInput">Enter your Gitrepository</label>
-                                <input type="text" class="form-control" name="gitrep" id=repoInput
-                                       placeholder="A valid Gitrepo...">
-                            </div>
-
-
-                            <div class="form-group">
-                                <label id="usernameLabel" for="usernameInput">Enter Username for SSH key</label>
-                                <input type="text" class="form-control" name="username" id=usernameInput
-                                       placeholder="Enter username for sshkey">
-                            </div>
-
-                            <div>
+    <div id="gitForm">
+        <div class="Aligner">
+            <div class="container h-100 d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div class=card>
+                        <div class="card-block">
+                            <form class="form-create" action="/" method="post">
                                 <div class="form-group">
-                                <label id="sshKeyLabel" for="sshKeyInput">Enter your SSH private key</label>
-                                <textarea name="sshkey" class="form-control" id = sshKeyInput></textarea>
-                            </div>
+                                    <label id="nameLabel" for="projectNameInput">Name your
+                                        project</label>
+                                    <input type="text" class="form-control" name="jobname" id="projectNameInput"
+                                           placeholder="Enter project name">
+                                </div>
+                                <div class="form-group">
+                                    <label id="gitLabel" for="repoInput">Enter your Gitrepository</label>
+                                    <input type="text" class="form-control" name="gitrep" id=repoInput
+                                           placeholder="A valid Gitrepo...">
+                                </div>
 
-                            <div id="chooseTest">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+
+                                <div class="form-group">
+                                    <label id="usernameLabel" for="usernameInput">Enter Username for SSH key</label>
+                                    <input type="text" class="form-control" name="username" id=usernameInput
+                                           placeholder="Enter username for sshkey">
+                                </div>
+
+                                <div>
+                                    <div class="form-group">
+                                        <label id="sshKeyLabel" for="sshKeyInput">Enter your SSH private key</label>
+                                        <textarea name="sshkey" class="form-control" id=sshKeyInput></textarea>
+                                    </div>
+
+                                    <div id="chooseTest">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-outline-primary
+                                                    dropdown-toggle"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             id="choiceBtn">
-                                        Choose Test
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a class="btn btn-outline-primary dropdown-item" id="dropDownJava"
-                                           href="#mavenForm">Java</a>
+                                                Choose Test
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="btn btn-outline-primary dropdown-item" id="dropDownJava"
+                                                   href="#mavenForm">Java</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <!-- Ska bara komma fram vid JavaMaven -->
-                            <div id="mavenForm">
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <label class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" value="on"
-                                                   name="findBugs">
-                                            <span class="custom-control-indicator"></span>
-                                            <span class="custom-control-description ml-4">FindBugs</span>
-                                        </label>
+                                    <!-- Ska bara komma fram vid JavaMaven -->
+                                    <div id="mavenForm">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" value="on"
+                                                           name="findBugs">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-description ml-4">FindBugs</span>
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <label class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" value="on"
+                                                           name="checkStyle">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-description ml-4">CheckStyle</span>
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-check">
-                                        <label class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" value="on"
-                                                   name="checkStyle">
-                                            <span class="custom-control-indicator"></span>
-                                            <span class="custom-control-description ml-4">CheckStyle</span>
-                                        </label>
+                                    <div class="form-inline">
+                                        <div>
+                                            <button class="btn btn-outline-primary" id="submitRepo"
+                                                    onclick="storeRepo()"
+                                                    type="submit" value="Submit">
+                                                Submit
+                                            </button>
+                                        </div>
+                                        <div id="regretPanel">
+                                            <button class="btn btn-outline-danger" id="regret"
+                                                    type="submit">
+                                                Back
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-inline">
-                                <div>
-                                    <button class="btn btn-outline-primary" id="submitRepo"
-                                            onclick="storeRepo()"
-                                            type="submit" value="Submit">
-                                        Submit
-                                    </button>
-                                </div>
-                                <div id="regretPanel">
-                                    <button class="btn btn-outline-danger" id="regret"
-                                            type="submit">
-                                        Back
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    $(function () {    /* Skapa en ny funktion för varje nytt test med samma struktur!  */
-        $("#mavenForm").hide();
-        $("#regretPanel").hide();
+    <script>
+        $(function () {    /* Skapa en ny funktion för varje nytt test med samma struktur!  */
+            $("#mavenForm").hide();
+            $("#regretPanel").hide();
 
-        /* Dölj varje div hanterar det nya testet! */
-        $("#dropDownJava").click(function () {
-            $("#chooseTest").hide();
-            $("#mavenForm").show();
-            $("#regretPanel").show();
+            /* Dölj varje div hanterar det nya testet! */
+            $("#dropDownJava").click(function () {
+                $("#chooseTest").hide();
+                $("#mavenForm").show();
+                $("#regretPanel").show();
+            });
         });
-    });
 
 
-    $("#regret").click(function () {
-        $("#mavenForm").hide();
-        $("#regretPanel").hide();
-        $("#chooseTest").show();
+        $("#regret").click(function () {
+            $("#mavenForm").hide();
+            $("#regretPanel").hide();
+            $("#chooseTest").show();
 
-    });
-</script>
+        });
+    </script>
 </div>
