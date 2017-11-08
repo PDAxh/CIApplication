@@ -4,7 +4,7 @@
     margin-bottom: 0 !important;
     border-radius: 0 !important;
     border: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.8);
     font-family: 'Abril Fatface', cursive;
     font-size: 20px;
 
@@ -163,7 +163,7 @@ label {
     border-width: 5px !important;
     width: 90%;
     border-color: rgba(0, 0, 0, 0.2) !important;
-    background-color: rgba(0, 0, 0, 0.6) !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
     padding-bottom: 1%;
     margin: 0px auto;
     margin-top: 2%;
