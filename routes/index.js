@@ -8,11 +8,6 @@
         res.render('index', {title: 'Index'});
     });
 
-    /*
-    router.get('/results', function(req, res, next) {
-        res.render('results', { title: 'reportsite' });
-    }); */
-
     router.get('/results', function (req, res, next) {
         //Getting Jenkins jobs
         dataGetter.getAllJobs('http://10.2.2.33:8080');
@@ -44,11 +39,7 @@
             res.render('results', {title: 'Results', insertRow: table});
         }
     });
-    /*document.getElementById("cProject").style.backgroundColor = rgba(255, 255, 255, 0.9);
-    document.getElementById("cPush").style.backgroundColor = rgba(255, 255, 255, 0.9);
-    document.getElementById("cBugs").style.backgroundColor = rgba(255, 255, 255, 0.9);
-    document.getElementById("cStyle").style.backgroundColor = rgba(255, 255, 255, 0.9);
-    document.getElementById("cDetails").style.backgroundColor = rgba(255, 255, 255, 0.9);*/
+
 
 
     module.exports = router;

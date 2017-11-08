@@ -1,12 +1,19 @@
 //Creates a new Jenkins job for a Java Maven project
+
 exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, checkBugs, sshKey, username) {
     console.log('Function createJavaMavenJob initialized');
     var yaml = require('js-yaml');
     var fs = require('fs');
 
-    //Reading from a blueprint yaml file
-    // Select type of job function
-    if((checkCheck === 'on') && (checkBugs === 'on')){
+    /**
+     *
+     * Reading from a blueprint yaml file
+     * Select type job-blueprints
+     *
+     */
+
+
+    if ((checkCheck === 'on') && (checkBugs === 'on')) {
         var data = fs.readFileSync('./mavenjobs/javamaven.yml', 'utf8');
         console.log('findbugs and checkstyles')
     }
@@ -23,7 +30,8 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
         var data = fs.readFileSync('./mavenjobs/javamaven_no_check_and_bugs.yml', 'utf8');
         console.log('just simple synk with CI')
     }
-    else console.log("system failure");{
+    else console.log("system failure");
+    {
     }
 
     //var data = fs.readFileSync('./javamaven.yml', 'utf8');
@@ -45,8 +53,42 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
     //Saving as a new json-file
     fs.writeFileSync("newjob.json", JSON.stringify(file, null, 2));
 
+
+
+    //TODO Create Connection where Credentialas ID and username will be connected for Jenkins.
     //Using job builder to create new job from json file
     const execSync = require('child_process').execSync;
     var cmd = execSync('jenkins-jobs --conf jenkins_jobs.ini update newjob.json');
 
+    const request = require('request');
+
+    request({
+        url: "http://10.2.2.33:8080/credentials/store/system/domain/_/createCredentials",
+        method: "POST",
+        auth: {
+
+            'user': 'admin1',
+            'pass': 'f564c4170d78015fbc51e4ad1d2ab084',
+            'sendImmediately': true
+        },
+        headers: {
+            'User-Agent': 'request',
+            "content-type": "application/json"
+        },
+        json: {
+            "": "0",
+            'credentials': {
+                'scope': "GLOBAL",
+                'id': "MATT10",
+                'username': "usernameGoesHere",
+                'password': "",
+                'privateKeySource': {
+                    "stapler-class": "com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey$DirectEntryPrivateKeySource",
+                    'privateKey': "keyGoesHere"
+                },
+                'description': "",
+                "stapler-class": "com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey"
+            }
+        }
+    });
 }
