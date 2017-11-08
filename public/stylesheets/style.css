@@ -9,13 +9,24 @@
     font-size: 20px;
 
 }
-.btn-outline-primary {
+.dropdown-menu, .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle, .btn-outline-primary.active .show,  .open > .btn-outline-primary.dropdown-toggle:focus, .open > .btn-outline-primary.dropdown-toggle.focus, .btn-outline-primary.dropdown-item{
+/*.btn-outline-primary, .btn-outline-primary.active .show, .btn-outline-primary.dropdown-toggle{ */
     color: lime !important;
     background-image: none;
-    background-color: transparent;
+    background-color: black;
     border-color:  lime !important;
+
 }
-.btn-outline-primary:hover {
+.btn-outline-primary:hover, .btn-outline-primary.disabled:hover,  .show>.btn-outline-primary.dropdown-toggle, .btn-outline-primary:active:hover, .open > .btn-outline-primary.dropdown-toggle.btn-outline-primary:disabled:hover .btn-outline-primary.dropdown-toggle:hover, .btn-outline-primary.active:hover, .open > .btn-outline-primary.dropdown-toggle:hover {
+/*.btn-outline-primary:hover, .btn-outline-primary.dropdown-toggle:hover, .btn-outline-primary.dropdown-item {
+
+
+
+.btn-outline-primary.active, .btn-outline-primary:active,
+
+
+
+*/
     color: black !important;
     background-color: lime !important;
     border-color: black !important;
