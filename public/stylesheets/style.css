@@ -4,25 +4,31 @@
     margin-bottom: 0 !important;
     border-radius: 0 !important;
     border: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.8);
     font-family: 'Abril Fatface', cursive;
     font-size: 20px;
 
 }
-.dropdown-menu, .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle, .btn-outline-primary.active .show,  .open > .btn-outline-primary.dropdown-toggle:focus, .open > .btn-outline-primary.dropdown-toggle.focus, .btn-outline-primary.dropdown-item{
+
+.btn:focus, .btn:active {
+    outline: none !important;
+}
+
+.dropdown-menu, .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle, .btn-outline-primary.active .show, .open > .btn-outline-primary.dropdown-toggle:focus, .open > .btn-outline-primary.dropdown-toggle.focus, .btn-outline-primary.dropdown-item {
 
     color: lime !important;
     background-image: none;
     background-color: black;
-    border-color:  lime !important;
-
+    border-color: lime !important;
 }
-.btn-outline-primary:hover,  .show>.btn-outline-primary.dropdown-toggle, .btn-outline-primary:active:hover, .open > .btn-outline-primary.dropdown-toggle.btn-outline-primary:disabled:hover .btn-outline-primary.dropdown-toggle:hover, .btn-outline-primary.active:hover, .open > .btn-outline-primary.dropdown-toggle:hover {
+
+.dropdown-menu:hover, .btn-outline-primary:hover, .show > .btn-outline-primary.dropdown-toggle, .btn-outline-primary:active:hover, .open > .btn-outline-primary.dropdown-toggle.btn-outline-primary:disabled:hover .btn-outline-primary.dropdown-toggle:hover, .btn-outline-primary.active:hover, .open > .btn-outline-primary.dropdown-toggle:hover {
 
     color: black !important;
     background-color: lime !important;
     border-color: black !important;
 }
+
 .img-responsive {
     display: block;
     max-width: 100%;
@@ -95,7 +101,8 @@ label {
     line-height: 2;
 
 }
-.nav-link{
+
+.nav-link {
     color: lime !important;
 }
 
@@ -137,11 +144,16 @@ label {
     box-sizing: border-box;
     box-shadow: 0 .5em 1em rgba(0, 0, 0, 0.5);
 }
+
 #bleachedBody {
     background-color: rgba(255, 255, 255, 0.9);
     background-size: cover;
     text-align: center;
     background-blend-mode: soft-light;
+}
+
+#projectNameInput, #repoInput, #usernameInput, #sshKeyInput {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 #resultsTable {
@@ -151,7 +163,7 @@ label {
     border-width: 5px !important;
     width: 90%;
     border-color: rgba(0, 0, 0, 0.2) !important;
-    background-color: rgba(0, 0, 0, 0.6) !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
     padding-bottom: 1%;
     margin: 0px auto;
     margin-top: 2%;
@@ -164,15 +176,16 @@ label {
     font-weight: 300;
 }
 
-#cProject{
+#cProject {
     font-family: 'Lato', sans-serif;
     font-weight: 700;
     font-size: 18px;
 }
-#change{
-      font-family: 'Lato', sans-serif !important;
-      font-weight: 700 !important;
-  }
+
+#change {
+    font-family: 'Lato', sans-serif !important;
+    font-weight: 700 !important;
+}
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 544px) {
