@@ -23,7 +23,7 @@
             #credentials-id: e8ed41e6-ec37-11e5-b5a0-43b698df0c45
     notifications:
       - http:
-          url: http://http://10.2.2.33:3300/notification
+          url: http://10.2.2.33:3300/notification
           format: json
           event: finalized
           timeout: 30000
