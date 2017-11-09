@@ -1,17 +1,28 @@
-//Creates a new Jenkins job for a Java Maven project
+/**
+ * jobCreator purpose is to do just as it stand, creates the job depending och users selection.
+ *
+ * 1.1 Creates new java-maven projects, using blueprints for each type of project avaible
+ * 1.2 Function that selects job blueprints for project, this one need to be worked with futheron to fit more projects
+ *
+ * 2.1 Git global configure variables
+ * 2.2 Declares global variables and setup for yml file.
+ *
+ * 3.1 Using job builder to create new job from json file,
+ * trying to establis connection via ssh keys.
+ * - this part is a work in progress, TODO Get ssh connection work propertly need to be done ASAP before anythiong else
+ *
+ */
+
+
+
+//1.1 Creates a new Jenkins job for a Java Maven project
 
 exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, checkBugs, sshKey, username) {
     console.log('Function createJavaMavenJob initialized');
     var yaml = require('js-yaml');
     var fs = require('fs');
 
-    /**
-     *
-     * Reading from a blueprint yaml file
-     * Select type job-blueprints
-     *
-     */
-
+ //1.2 Function that selects job blueprints for project
 
     if ((checkCheck === 'on') && (checkBugs === 'on')) {
         var data = fs.readFileSync('./mavenjobs/javamaven.yml', 'utf8');
@@ -34,14 +45,13 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
     {
     }
 
-    //var data = fs.readFileSync('./javamaven.yml', 'utf8');
     var file = yaml.safeLoad(data, 'utf8');
 
-    //Git global configure variables
+    //2.1 Git global configure variables
     var newGitConfigName = "confname";
     var newGitConfigEmail = "confemail";
 
-    //Editing the yaml file
+    //2.2Editing the yaml file
     file[0].defaults.scm[0].git.url = newGitRepo;
     file[0].defaults.scm[0].git['git-config-name'] = newGitConfigName;
     file[0].defaults.scm[0].git['git-config-email'] = newGitConfigEmail;
@@ -50,13 +60,13 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
     file[1].job.name = newJobName + "-maven-job";
     file[1].job.properties[0].github.url = newGitRepo;
 
-    //Saving as a new json-file
+    //2.3 Saving as a new json-file
     fs.writeFileSync("newjob.json", JSON.stringify(file, null, 2));
 
 
 
     //TODO Create Connection where Credentialas ID and username will be connected for Jenkins.
-    //Using job builder to create new job from json file
+    // 3.1 Using job builder to create new job from json file
     const execSync = require('child_process').execSync;
     var cmd = execSync('jenkins-jobs --conf jenkins_jobs.ini update newjob.json');
 

@@ -1,18 +1,29 @@
+/**
+ * Thios files contains mostly
+ *
+ * 1.1 Starts the homepage
+ * 1.2 Gets all job from jenkins server and 1.3publish it on result screen
+ * 1.4 Creates the tables and sorts the data into each correct column
+ *
+ *
+ */
+
+
     var express = require('express');
     var router = express.Router();
     var dataGetter = require('../public/javascripts/dataGetter');
 
 
-    /* GET home page. */
+    /* 1.1 GET home page. */
     router.get('/', function (req, res, next) {
         res.render('index', {title: 'Index'});
     });
-
+    //1.2Getting Jenkins jobs
     router.get('/results', function (req, res, next) {
-        //Getting Jenkins jobs
+
         dataGetter.getAllJobs('http://10.2.2.33:8080');
 
-        //Builds the table and then renders the results site
+        //1. 3 Builds the table and then renders the results site
         exports.loadJobs = function (jobsList) {
             //Sort jobs by date
             jobsList.sort(function compare(a, b) {
@@ -20,7 +31,7 @@
                 var dateB = new Date(b.pushDate);
                 return dateB - dateA;
             });
-
+            //1.4
             var table = "";
             for (var i = 0; i < jobsList.length; i++) {
                 table += '<tr><td class="col-md-5ths col-xs-6" id="cProject">' + jobsList[i].name + '</b></td>' +
