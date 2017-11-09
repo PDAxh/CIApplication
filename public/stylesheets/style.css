@@ -1,4 +1,4 @@
-/* indexd.hbs */
+/* Att first, CSS for indexd.hbs */
 
 .navbar {
     margin-bottom: 0 !important;
@@ -7,15 +7,9 @@
     background: rgba(0, 0, 0, 0.8);
     font-family: 'Abril Fatface', cursive;
     font-size: 20px;
-
 }
-
-.btn:focus, .btn:active {
-    outline: none !important;
-}
-
+/* CSS for the buttons and the index page... The code is overiding the btn-outline-primary button!*/
 .dropdown-menu, .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle, .btn-outline-primary.active .show, .open > .btn-outline-primary.dropdown-toggle:focus, .open > .btn-outline-primary.dropdown-toggle.focus, .btn-outline-primary.dropdown-item {
-
     color: lime !important;
     background-image: none;
     background-color: black;
@@ -23,43 +17,20 @@
 }
 
 .dropdown-menu:hover, .btn-outline-primary:hover, .show > .btn-outline-primary.dropdown-toggle, .btn-outline-primary:active:hover, .open > .btn-outline-primary.dropdown-toggle.btn-outline-primary:disabled:hover .btn-outline-primary.dropdown-toggle:hover, .btn-outline-primary.active:hover, .open > .btn-outline-primary.dropdown-toggle:hover {
-
     color: black !important;
     background-color: lime !important;
     border-color: black !important;
 }
-
+/* To get the images more responsive... At this state, no backgrounds for mobile is included in the project  */
 .img-responsive {
     display: block;
     max-width: 100%;
     height: auto;
 }
 
-.table thead tr th, .table tbody tr td {
-    text-align: center;
-    border-color: transparent;
-}
-
-.table {
-
-    border-top: none !important;
-    border-left: none;
-    border-right: none;
-}
-
-.borderless > thead > tr > th {
-    border-top: none;
-}
-
-label {
-    font-family: 'Karla', sans-serif;
-    font-size: 1.1em;
-    color: #ffffff;
-}
-
 /* I am trying to center a div between the navigation bar and div "gitForm, with .flexwrap and .flex-centered*/
 
-/* #headLine is the id of the text that is placed inside the div that I am trying to center.*/
+/* #headLine is the id of the text that is placed inside the div in index.hbs*/
 #headLine {
 
     font-family: 'Abril Fatface', cursive;
@@ -70,7 +41,6 @@ label {
     color: #ffffff;
     border-radius: 25px;
 }
-
 /* I am using aligner to center the div in the middle of the screen.*/
 .Aligner {
     display: flex;
@@ -82,13 +52,13 @@ label {
 .Aligner-item {
     flex: 1;
 }
-
+/* The at the center is a...*/
 .card {
     background: rgba(0, 0, 0, 0.8) !important;
     border-radius: 25px !important;
 
 }
-
+/* Here is the CSS for the checkbozes that you use to choose what kind of tests that you want to do!  */
 .custom-checkbox .custom-control-indicator {
     border-radius: 50%;
     height: 25px;
@@ -101,31 +71,22 @@ label {
     line-height: 2;
 
 }
-
+/*  Modified the color of the link at the navigation menu*/
 .nav-link {
     color: lime !important;
 }
+/* The label under the navigation-menu */
 
+label {
+    font-family: 'Karla', sans-serif;
+    font-size: 1.1em;
+    color: #ffffff;
+}
 /* When I remove background the icon goes back to that default size */
 .custom-control-input:checked ~ .custom-control-indicator {
     background-color: lime !important;
 }
-
-/* results.hbs */
-#resultsPage {
-    background: url("../images/skyline.jpg");
-    background-size: cover;
-}
-
-#semiBlackHead {
-    background: transparent;
-    border-radius: 25px;
-    font-family: 'Karla', sans-serif;
-    color: #ffffff;
-    padding: 0px;
-
-}
-
+/* Modifing the positions of the buttons at the Index page */
 #choiceBtn {
     margin-bottom: 10%;
 }
@@ -134,6 +95,39 @@ label {
     margin-left: 20%;
 }
 
+
+/* CSS FOR THE RESULTPAGE*/
+
+/*  The default design of Bootstrap tables is quite horrible. The head is square and outlined with a thin white line. I tried at first to manipulate it, by adding a border radius to the head. I also tried to recolor the
+  white line. But I realized that the best way was to hide the disturbing elements altogether!
+
+  At first, I made the border-color transparent. It was quite ugly*/
+.table thead tr th, .table tbody tr td {
+    text-align: center;
+    border-color: transparent;
+}
+/*  The borders "the thin white line"  was impossible to manipulate, so I erased it.*/
+.table {
+    border-top: none !important;
+    border-left: none;
+    border-right: none;
+}
+.borderless > thead > tr > th {
+    border-top: none;
+}
+/* results.hbs */
+#resultsPage {
+    background: url("../images/skyline.jpg");
+    background-size: cover;
+}
+#transparentHead {
+    background: transparent;
+    border-radius: 25px;
+    font-family: 'Karla', sans-serif;
+    color: #ffffff;
+    padding: 0px;
+
+}
 .th {
     width: 100%;
     position: relative;
@@ -155,14 +149,15 @@ label {
 #projectNameInput, #repoInput, #usernameInput, #sshKeyInput {
     background-color: rgba(255, 255, 255, 0.9);
 }
+/* The black transparent color of the table head and bottom is the background color of the table itself! The white color is created by the div
+#bleachedBody!*/
 
 #resultsTable {
-
     border-radius: 25px !important;
     border-style: ridge;
     border-width: 5px !important;
     width: 90%;
-    border-color: rgba(0, 0, 0, 0.2) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;   /* Used to create tge */
     background-color: rgba(0, 0, 0, 0.8) !important;
     padding-bottom: 1%;
     margin: 0px auto;
