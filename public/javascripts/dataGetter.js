@@ -192,5 +192,4 @@ function getCommitInfo(host, buildNr, jobsList) {
                 index.loadJobs(jobsList); //Send for building results table with jobsList
         });
     });
-
 }

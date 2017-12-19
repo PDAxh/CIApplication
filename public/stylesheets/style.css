@@ -32,7 +32,6 @@
 
 /* #headLine is the id of the text that is placed inside the div in index.hbs*/
 #headLine {
-
     font-family: 'Abril Fatface', cursive;
     background-color: rgba(0, 0, 0, 0.8);
     display: inline-block;
@@ -48,6 +47,13 @@
     min-height: 80vh;
     justify-content: center;
 }
+
+
+
+
+
+
+
 
 .Aligner-item {
     flex: 1;
@@ -119,6 +125,7 @@ label {
 #resultsPage {
     background: url("../images/skyline.jpg");
     background-size: cover;
+    min-height: 100vh;
 }
 #transparentHead {
     background: transparent;
@@ -185,7 +192,7 @@ label {
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 544px) {
     #frontPage {
-        background: url("../images/london.jpg") 0 no-repeat fixed;;
+        background: url("../images/london.jpg") 0 no-repeat fixed;
         /* Free for commercial use: Photo by Lionel Paulus on Unsplash.com*/
         height: 100vh;
 
