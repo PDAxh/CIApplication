@@ -1,5 +1,5 @@
 /**
- * Thios files contains mostly
+ * This files contains mostly
  *
  * 1.1 Starts the homepage
  * 1.2 Gets all job from jenkins server and 1.3publish it on result screen

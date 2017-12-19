@@ -20,7 +20,7 @@
       "scm": [
         {
           "git": {
-            "url": "",
+            "url": "decembertest.git",
             "credentials-id": "username",
             "add": {
               "domain": "Global credentials (unrestricted)",
@@ -58,7 +58,7 @@
   },
   {
     "job": {
-      "name": "-maven-job",
+      "name": "DecemberTest-maven-job",
       "node": "master",
       "builders": [
         {
@@ -79,7 +79,7 @@
       "properties": [
         {
           "github": {
-            "url": ""
+            "url": "decembertest.git"
           }
         }
       ],

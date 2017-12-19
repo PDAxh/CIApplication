@@ -30,16 +30,16 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
     }
 
     else if ((checkCheck !== 'on') && (checkBugs === 'on')) {
-        var data = fs.readFileSync('../../mavenjobs/javamaven_findbug.yml', 'utf8');
+        var data = fs.readFileSync('./mavenjobs/javamaven_findbug.yml', 'utf8');
         console.log('findbugs only')
     }
     else if ((checkCheck === 'on') && (checkBugs !== 'on')) {
-        var data = fs.readFileSync('../../mavenjobs/javamaven_checkstyles.yml', 'utf8');
-        console.log('checksings only')
+        var data = fs.readFileSync('./mavenjobs/javamaven_checkstyles.yml', 'utf8');
+        console.log('checkstyles only')
     }
     else if ((checkCheck !== 'on') && (checkBugs !== 'on')) {
         var data = fs.readFileSync('./mavenjobs/javamaven_no_check_and_bugs.yml', 'utf8');
-        console.log('just simple synk with CI')
+        console.log('just simple sync with CI-server')
     }
     else console.log("system failure");
     {
@@ -73,7 +73,7 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
     const request = require('request');
 
     request({
-        url: "http://10.2.2.33:8080/credentials/store/system/domain/_/createCredentials",
+        url: "http://10.90.131.154:8080/credentials/store/system/domain/_/createCredentials",
         method: "POST",
         auth: {
 
