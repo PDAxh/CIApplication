@@ -20,7 +20,7 @@
       "scm": [
         {
           "git": {
-            "url": "decembertest.git",
+            "url": "https://github.com/PDAxh/CIApplication",
             "credentials-id": "username",
             "add": {
               "domain": "Global credentials (unrestricted)",
@@ -29,9 +29,9 @@
               "username": "username-inserts-here",
               "private key": null,
               "enter directly": true,
-              "key": "",
+              "key": "-----BEGIN RSA PRIVATE KEY-----\r\nMIIEowIBAAKCAQEA7Ingc8fEAzBYJrvA4FA0MD3YLg9oNDe+3jfWNOeeWWyZrHro\r\n7KJL1+Zou70sTkQtiT6pBY3XIUIRz1TujE+Wkl3MPka2RP1izaHeGDAOeP/lbXOE\r\nWY4kMeApFEFcbaYdyHe3WkG2uzJlshtSUenw4YpC7Lr/eQ0ZwIhZ5YiOX45V1PYs\r\nYsdK/dEbbfImwN2an+HzAeMmxGb83IwzXtJfSm5wzCCLO4O1sapI7v3Gsty96oX0\r\nU9ltNSo9F4p4gcuT+4BhpCDgh6f2bEKpQVghxd/SFiESseJGUfvE36mbuf0bsi2d\r\nwO9iv9Pu9NnpC9VtdHr7NACWvfediOe8JuzHVwIDAQABAoIBAGzA58XT7zdYHu+Q\r\nG5oGxjf391EWHF8F0mfxXDdu1stetzkqObWy2RQnB7hpvdkuV5FmkefP0z2jVvTw\r\no803Oo+JOMLZWCxYI/lPlwGf9seDQEUWe5+BTvrviXOaqZhwa/kjsdV5qT5gaYl+\r\nLlcjLHFGVIbrY1KQx2pSRqLWKj+cG2Et7ISyG9RVUdK6Zfdptdu/7EGM6vcjVB7/\r\nVFnNdUfj6KEAsX69Q1n+55IyZJMCA91BSNdBV8Bun+dNmJpjVHibEACtm3q884Jg\r\n3YmrcMqYeFrK8KT/HvkVo0ECPswG9QaTQ+5IhkpaXmVhQ/cTIn2iFYo6l4v1iajn\r\n2JfPO8ECgYEA+ojz28gCgUMKTsG7RpeKR6urLNWUaVBeZ55kJ34Fv3BU+EMzGaoe\r\noVAFc2Aw7xFyzooKKQ2BgFZdMTC9oIfIkf1OxBGdbD64oKlytRnu9mks0n3h/H7X\r\nmHMPDloFYxB50FzMHP3GoZX/LRr5UYYBQnaMROXi7Y8wq5aj52E8AakCgYEA8bLD\r\n1pSYZpP9xFilc/nAOziKTmbRVd7B1cIexjxWGME/SlfX+ocKUzlJM1gAZ/tY0RqA\r\nS8wEZsoERG8qGJR3/V8nUDGCkb70/b+mDWqWpx0jhxgq3wKd5bRWd7tBVIJzWM/j\r\n1/OdwYNFVtaVcThadWjxTUri40X6ljQLeSeiIP8CgYAg0ZnoO34ggrCx+mzW5XkG\r\nxHUq7VuApDeJqVUDW13TYxquXtct0Hwss3fTUlF2r7lzVt/X2t4Q+r9Ad1sP0Vmz\r\nzhPoWUpe6KR0312YXapQ+xwVAsp8sfz6CnB5d89m17ytT8qpLZE8j5KazQLF7CD0\r\nHOVpDRg5+FzuzU/xOmqK6QKBgE0n7P5+Fxx/172rMr4QFz6QcQ5QIjlQT/5l5p8P\r\nuchTQFoCKs8t9qzUl7qNOCv5f8PYuuX3bdxGVxBlkEGie59llc4yz+So2dp7KI4V\r\n3ZvhYGsK2vywACnI5OV54IQS1LGgQ7K3cT/KIQN0ouYuwCnE42ryIfW9bB4w5Qy7\r\nCzWPAoGBAM7H/qhTEvciyZvjHxB/aGlTwvUIOolz+UqHGLBTCuGWhIKmPSmM7Znw\r\nX1U/sDOrRlK8AC02N9zyNggKGQdNtNaGnhMMl83ruwhqdRDcEMkKyW/Sunv2/Q5y\r\ns8E4hMdhQOfXy/lcZOBdqL1GKa1pOrfDftfaJSkQ+lXzeAdAUirr\r\n-----END RSA PRIVATE KEY-----",
               "id": "username",
-              "user": ""
+              "user": "PDAxh"
             },
             "clean": {
               "after": true
@@ -58,7 +58,7 @@
   },
   {
     "job": {
-      "name": "DecemberTest-maven-job",
+      "name": "TestProjectDecember-maven-job",
       "node": "master",
       "builders": [
         {
@@ -79,7 +79,7 @@
       "properties": [
         {
           "github": {
-            "url": "decembertest.git"
+            "url": "https://github.com/PDAxh/CIApplication"
           }
         }
       ],
