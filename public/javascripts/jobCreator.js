@@ -9,7 +9,7 @@
  *
  * 3.1 Using job builder to create new job from json file,
  * trying to establis connection via ssh keys.
- * - this part is a work in progress, TODO Get ssh connection work propertly need to be done ASAP before anythiong else
+ * - this part is a work in progress, TODO Get ssh connection work properly need to be done ASAP before anythiong else
  *
  */
 
@@ -73,7 +73,7 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
     const request = require('request');
 
     request({
-        url: "http://10.90.131.154:8080/credentials/store/system/domain/_/createCredentials",
+        url: "http://10.8.1.37:8080/credentials/store/system/domain/_/createCredentials",
         method: "POST",
         auth: {
 
