@@ -23,7 +23,7 @@
             credentials-id: bac64601-59ef-4452-a816-2b927746320b
     notifications:
       - http:
-          url: http://http://10.2.2.33:3300/notification
+          url: http://http://10.90.131.154:3300/notification
           format: json
           event: finalized
           timeout: 30000

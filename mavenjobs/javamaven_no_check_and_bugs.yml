@@ -35,7 +35,7 @@
 
     notifications:
       - http:
-          url: http://10.2.2.33:3300/notification
+          url: http://10.90.131.154:3300/notification
           format: json
           event: finalized
           timeout: 30000

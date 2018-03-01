@@ -58,7 +58,7 @@
   },
   {
     "job": {
-      "name": "MarsTest3-maven-job",
+      "name": "bookstore project2-maven-job",
       "node": "master",
       "builders": [
         {
