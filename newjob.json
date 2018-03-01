@@ -20,7 +20,7 @@
       "scm": [
         {
           "git": {
-            "url": "",
+            "url": "https://github.com/PDAxh/bookstore",
             "credentials-id": "username",
             "add": {
               "domain": "Global credentials (unrestricted)",
@@ -58,7 +58,7 @@
   },
   {
     "job": {
-      "name": "-maven-job",
+      "name": "MarsTest3-maven-job",
       "node": "master",
       "builders": [
         {
@@ -79,7 +79,7 @@
       "properties": [
         {
           "github": {
-            "url": ""
+            "url": "https://github.com/PDAxh/bookstore"
           }
         }
       ],
