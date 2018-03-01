@@ -73,7 +73,7 @@ exports.createJavaMavenJob = function (newJobName, newGitRepo, checkCheck, check
     const request = require('request');
 
     request({
-        url: "http://10.8.1.37:8080/credentials/store/system/domain/_/createCredentials",
+        url: "http://10.90.131.154:8080/credentials/store/system/domain/_/createCredentials",
         method: "POST",
         auth: {
 
